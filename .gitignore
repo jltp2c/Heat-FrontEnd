@@ -1,3 +1,6 @@
+# Environment Variables should NEVER be published
+.env
+
 # Logs
 logs
 *.log
@@ -22,3 +25,5 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+
