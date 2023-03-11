@@ -23,10 +23,10 @@ function CreateProfile() {
 
       if (response.status === 201) {
         setGender("");
-        setAge("");
-        setCurrentHeight("");
-        setCurrentWeight("");
-        setWeightGoal("");
+        setAge(0);
+        setCurrentHeight(0);
+        setCurrentWeight(0);
+        setWeightGoal(0);
       }
       console.log(response);
     } catch (error) {}
