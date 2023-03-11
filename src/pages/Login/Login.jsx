@@ -29,8 +29,12 @@ export default function Login() {
       await authenticateUser();
 
       if (response.status === 200) {
-        console.log("user logged");
-        navigate("/createprofile");
+        //hasProfile condition is initialized in the backend route and returns a boleean value
+        if (response.data.hasProfile) {
+          navigate("/board");
+        } else {
+          navigate("/createprofile");
+        }
       }
     } catch (error) {
       console.error("error:", error.response.data.message);

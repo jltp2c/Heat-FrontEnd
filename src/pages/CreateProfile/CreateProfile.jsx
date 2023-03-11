@@ -1,5 +1,6 @@
 import myApi from "../../service/service.js";
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
+import { AuthContext } from "../../context/AuthContext.jsx";
 
 function CreateProfile() {
   const [gender, setGender] = useState("");
@@ -7,6 +8,7 @@ function CreateProfile() {
   const [currentHeight, setCurrentHeight] = useState(0);
   const [currentWeight, setCurrentWeight] = useState(0);
   const [weightGoal, setWeightGoal] = useState(0);
+  const { token } = useContext(AuthContext);
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -18,7 +20,9 @@ function CreateProfile() {
       weightGoal,
     };
     try {
-      const response = await myApi.post("/api/board/profile", profileToCreate);
+      const response = await myApi.post("/api/board/profile", profileToCreate, {
+        headers: { Authorization: token },
+      });
       console.log(response);
 
       if (response.status === 201) {
@@ -41,8 +45,8 @@ function CreateProfile() {
           id=""
           onChange={(event) => setGender(event.target.value)}
         >
-          <option value="Pun">Man</option>
-          <option value="Programming">Woman</option>
+          <option value="man">Man</option>
+          <option value="woman">Woman</option>
         </select>
       </div>
 
