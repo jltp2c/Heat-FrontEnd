@@ -33,7 +33,9 @@ function CreateProfile() {
         setWeightGoal(0);
       }
       console.log(response);
-    } catch (error) {}
+    } catch (error) {
+      console.log(error);
+    }
   };
   return (
     <form onSubmit={handleSubmit}>
