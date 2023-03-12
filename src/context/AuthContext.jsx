@@ -1,4 +1,4 @@
-import { createContext, useState, Useffect, useEffect } from "react";
+import { createContext, useState, useEffect } from "react";
 import myApi from "../service/service";
 export const AuthContext = createContext();
 
@@ -27,17 +27,17 @@ function AuthContextWrapper(props) {
     try {
       const currentToken = getToken();
       setToken(currentToken);
-      console.log("current token is:", currentToken);
+      // console.log("current token is:", currentToken);
       if (!currentToken) {
         return setUser("no token found", null);
       }
       const response = await myApi.get("/api/auth/", {
         headers: { Authorization: `Bearer ${currentToken}` },
       });
-      console.log("response from myApi.get('/api/auth/') is", response);
+      // console.log("response from myApi.get('/api/auth/') is", response);
       if (response.status === 200) {
         setUser(response.data);
-        console.log("response.data is:", response.data);
+    
         setIsloading(false);
       }
     } catch (error) {
@@ -51,7 +51,7 @@ function AuthContextWrapper(props) {
     authenticateUser();
   }, []);
 
-  console.log("user is", user);
+  // console.log("user is", user);
   return (
     <AuthContext.Provider
       value={{ storeToken, user, authenticateUser, removeToken, token }}

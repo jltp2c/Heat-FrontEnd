@@ -10,16 +10,16 @@ function Layout() {
   }
   return (
     <div>
-      <p>LAYOUT TEST</p>
+      <h1>HEAT</h1>
       <nav>
-        <ul>
-          <NavLink>
+        <ul className="navBar">
+          <NavLink to="/board">
             <li>Board</li>
           </NavLink>
-          <NavLink>
+          <NavLink to="/board/profile">
             <li>Profile</li>
           </NavLink>
-          <NavLink>
+          <NavLink to="/board/foods">
             <li>Foods</li>
           </NavLink>
           <NavLink to="/">
