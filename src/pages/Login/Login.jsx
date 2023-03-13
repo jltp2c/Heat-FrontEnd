@@ -37,7 +37,7 @@ export default function Login() {
         }
       }
     } catch (error) {
-      console.error("error:", error.response.data.message);
+      console.error("error:");
       setError(error.response.data.message);
     }
   }

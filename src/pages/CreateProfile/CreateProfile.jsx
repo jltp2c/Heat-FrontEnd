@@ -1,6 +1,8 @@
 import myApi from "../../service/service.js";
-import React, { useContext, useState } from "react";
+import React from "react";
+import { useContext, useState } from "react";
 import { AuthContext } from "../../context/AuthContext.jsx";
+import { useNavigate } from "react-router-dom";
 
 function CreateProfile() {
   const [gender, setGender] = useState("");
@@ -9,6 +11,8 @@ function CreateProfile() {
   const [currentWeight, setCurrentWeight] = useState(0);
   const [weightGoal, setWeightGoal] = useState(0);
   const { token } = useContext(AuthContext);
+
+  const navigate = useNavigate();
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -31,6 +35,7 @@ function CreateProfile() {
         setCurrentHeight(0);
         setCurrentWeight(0);
         setWeightGoal(0);
+        navigate("/board");
       }
       console.log(response);
     } catch (error) {
@@ -73,7 +78,7 @@ function CreateProfile() {
             value={currentHeight}
             onChange={(event) => setCurrentHeight(event.target.value)}
           />{" "}
-          m
+          cms
         </label>
       </div>
 
