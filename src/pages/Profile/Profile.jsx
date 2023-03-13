@@ -11,6 +11,7 @@ function Profile() {
   const [currentHeight, setCurrentHeight] = useState(0);
   const [currentWeight, setCurrentWeight] = useState(0);
   const [weightGoal, setWeightGoal] = useState(0);
+  const [idProfile, setIdProfile] = useState("");
   const { user: userContext, getToken } = useContext(AuthContext);
 
   const navigate = useNavigate();
@@ -30,6 +31,7 @@ function Profile() {
       setCurrentWeight(response.data.currentWeight);
       setWeightGoal(response.data.weightGoal);
       setUser(response.data.user.username);
+      setIdProfile(response.data._id);
     } catch (error) {
       console.log(error);
     }
@@ -56,6 +58,10 @@ function Profile() {
     return imc.toFixed(1);
   };
 
+  const handleUpdate = async () => {
+    navigate(`/board/profile/update/${idProfile}`);
+  };
+
   return (
     <div>
       <h1>Welcome {userContext?.username}</h1>
@@ -67,7 +73,7 @@ function Profile() {
       <p>Current IMC : {calculateImc(currentWeight, currentHeight)}</p>
       <p>Calories Goal : {weightGoal / 3}</p>
 
-      <button>update profile</button>
+      <button onClick={handleUpdate}>update profile</button>
       <button onClick={handleDelete}>delete profile</button>
     </div>
   );
