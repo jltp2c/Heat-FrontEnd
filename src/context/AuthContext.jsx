@@ -29,12 +29,13 @@ function AuthContextWrapper(props) {
       setToken(currentToken);
       // console.log("current token is:", currentToken);
       if (!currentToken) {
-        return setUser("no token found", null);
+        setUser(null);
+        setIsloading(false);
+        return;
       }
       const response = await myApi.get("/api/auth/", {
         headers: { Authorization: `Bearer ${currentToken}` },
       });
-      console.log(response);
       // console.log("response from myApi.get('/api/auth/') is", response);
       if (response.status === 200) {
         setUser(response.data);
@@ -48,7 +49,6 @@ function AuthContextWrapper(props) {
     }
   }
 
-
   useEffect(() => {
     authenticateUser();
   }, []);
@@ -56,7 +56,15 @@ function AuthContextWrapper(props) {
   // console.log("user is", user);
   return (
     <AuthContext.Provider
-      value={{ storeToken, user, authenticateUser, removeToken, token, getToken }}
+      value={{
+        storeToken,
+        user,
+        authenticateUser,
+        removeToken,
+        token,
+        getToken,
+        isLoading,
+      }}
     >
       {props.children}
     </AuthContext.Provider>
