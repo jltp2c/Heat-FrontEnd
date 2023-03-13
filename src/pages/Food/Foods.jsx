@@ -1,21 +1,20 @@
 import axios from "axios";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState,useContext } from "react";
 import ConsumeFoods from "./ConsumeFoods";
+import { AuthContext } from "../../context/AuthContext";
 
 function Foods() {
 
   const [foods, setFoods] = useState([])
   const [foodsConsumed, setfoodsConsumed] = useState([])
+  const {user : userContext} = useContext(AuthContext);
 
-  function getToken() {
-    return localStorage.getItem("token");
-  }
+
 // all storage food
   const getAllFoods= async() => {
-    const currentToken = getToken();
     try {
       const response = await axios.get('http://localhost:5005/api/board/foods', {
-      headers: { Authorization: `Bearer ${currentToken}` }})
+      headers: { Authorization: `Bearer ${localStorage.getItem("token")}` }})
       // console.log(response.data.food)
       setFoods(response.data.food)
     } catch (error) {
@@ -25,12 +24,12 @@ function Foods() {
 
   //add a consume add in the database adding with the button "+"
   const getOneFood = async (foodId) =>{
-    const currentToken = getToken();
+    
     try {
-    // par pur hasard j'ai essayé de mettre foodId en deuxieme argument comme le montre dans les tuto axios pour le post mais faut demander au TI pourquoi car je comprends pas trop, quand on appuie ca ajoute bien
     const response= await axios.post(`http://localhost:5005/api/board/foods/${foodId}`,foodId,{
-    headers: { Authorization: `Bearer ${currentToken}` }})
+    headers: { Authorization: `Bearer ${localStorage.getItem("token")}` }})
       getAllFoodsConsumed()
+      console.log(response)
     } catch (error) {
       console.log(error)
     }
@@ -38,10 +37,10 @@ function Foods() {
 
   // all foods consumed
   const getAllFoodsConsumed= async() => {
-    const currentToken = getToken();
+  
     try {
       const response = await axios.get('http://localhost:5005/api/board/foods/consumed', {
-      headers: { Authorization: `Bearer ${currentToken}` }})
+      headers: { Authorization: `Bearer ${localStorage.getItem("token")}` }})
       // console.log(response.data.foodConsumed)
       setfoodsConsumed(response.data.foodConsumed)
     } catch (error) {
@@ -62,7 +61,7 @@ function Foods() {
           <div className="searchBarFood">
             <input type="text"  placeholder=" Example : egg" />
           </div>
-          <ConsumeFoods foodsConsumed={foodsConsumed} getAllFoodsConsumed={getAllFoodsConsumed} />
+          <ConsumeFoods foodsConsumed={foodsConsumed} getAllFoodsConsumed={getAllFoodsConsumed} userContext={userContext} />
           <h3>Food storage ( portion : 100g)</h3>
           <div className="foodStorage">
             {foods.map((eachFood) => {

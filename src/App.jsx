@@ -9,6 +9,7 @@ import Login from "../src/pages/Login/Login";
 import Presentation from "../src/pages/Presentation/Presentation";
 import Profile from "../src/pages/Profile/Profile";
 import Signup from "../src/pages/Signup/Signup";
+import ProtectedRoute from "./pages/Navigation/ProtectedRoute";
 
 
 function App() {
@@ -18,12 +19,15 @@ function App() {
         <Route path="/" element={<Presentation />} />
         <Route path="/auth/signup" element={<Signup />} />
         <Route path="/auth/login" element={<Login />} />
-        <Route path="/createprofile" element={<CreateProfile />} />
-        <Route element={<Layout />}>
-          <Route path="/board" element={<Board />} />
-          <Route path="/board/profile" element={<Profile />} />
-          <Route path="/board/foods" element={<Food />} />
-          <Route path="*" element={<Error />} />
+
+        <Route element={<ProtectedRoute />}>
+          <Route path="/createprofile" element={<CreateProfile />} />
+          <Route element={<Layout />}>
+            <Route path="/board" element={<Board />} />
+            <Route path="/board/profile" element={<Profile />} />
+            <Route path="/board/foods" element={<Food />} />
+            <Route path="*" element={<Error />} />
+        </Route>
         </Route>
       </Routes>
     </div>

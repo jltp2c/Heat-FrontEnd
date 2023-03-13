@@ -1,12 +1,9 @@
 import axios from "axios";
-import { useEffect, useState } from "react";
+import React, { useState } from "react";
 
-export default function ConsumeFoods({ foodsConsumed, getAllFoodsConsumed}) {
+export default function ConsumeFoods({ foodsConsumed, getAllFoodsConsumed,userContext}) {
 
-
-    function getToken() {
-      return localStorage.getItem("token");
-    }
+    const [currentWeight, setCurrentWeight] = useState(0);
 
     // const getUserInfo = async () => {
     //   try {
@@ -18,10 +15,9 @@ export default function ConsumeFoods({ foodsConsumed, getAllFoodsConsumed}) {
     // }
 
     const handleDelete = async (foodId) => {
-      const currentToken = getToken();
     try {
       const deleteFood = await axios.delete(`http://localhost:5005/api/board/foods/${foodId}`,{
-          headers: { Authorization: `Bearer ${currentToken}` }})
+          headers: { Authorization: `Bearer ${localStorage.getItem("token")}` }})
       // console.log(deleteFood);
       getAllFoodsConsumed()
       } catch (error) {
@@ -34,7 +30,6 @@ export default function ConsumeFoods({ foodsConsumed, getAllFoodsConsumed}) {
       for (let i = 0 ; i < foodsConsumed.length ; i++){
        total += foodsConsumed[i].calories
       }
-      
       return total
     }
 
@@ -52,22 +47,32 @@ export default function ConsumeFoods({ foodsConsumed, getAllFoodsConsumed}) {
       for (let i = 0 ; i < foodsConsumed.length ; i++){
        total += foodsConsumed[i].carbohydrates
       }
-      
       return total.toFixed(2)
     }
 
-      function handleSelectChange(event) {
-        setSelectedValue(event.target.value);
-  }
+    const currentWeightProtein = () =>{
+      return currentWeight*0.8
+    }
 
+    const getProfile = async () =>{
+     const response = await axios.get(
+        "http://localhost:5005/api/board/profile",
+        {
+          headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
+        }
+      );
+      // console.log("RESPONSE :",response.data.currentWeight)
+      setCurrentWeight(response.data.currentWeight)
+    }
+    getProfile()
 
   return (
       <div className="containerFoodConsumed">
             <h3>My Meal</h3>
             <div className="titles">
-              <h4>"Name of user"</h4>
+              <h4> Profile : {userContext?.username}</h4>
               <h4>Daily Calorie : {caloriesTotal()} kCal</h4>
-              <h4>Protein(s) :{ProteinTotal()} g /(0,8 x "weight") g</h4>
+              <h4>Protein(s) :{ProteinTotal()} g / {currentWeightProtein()}  g</h4>
               <h4>Carbohydrate(s) : {carboTotal()} g </h4>
             </div>
                {foodsConsumed.map(foodConsumed=>{

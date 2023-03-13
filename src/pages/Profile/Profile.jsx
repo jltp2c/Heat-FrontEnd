@@ -1,34 +1,26 @@
-import React, { useContext, useEffect, useState } from "react";
-import ProfileCard from "../../components/Profile/ProfileCard";
+import React, { useContext, useEffect, useState} from "react";
+import { Navigate, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../context/AuthContext";
 import axios from "axios";
 import myApi from "../../service/service.js";
 
-function Profile(props) {
+function Profile() {
   const [user, setUser] = useState("");
   const [gender, setGender] = useState("");
   const [age, setAge] = useState(0);
   const [currentHeight, setCurrentHeight] = useState(0);
   const [currentWeight, setCurrentWeight] = useState(0);
   const [weightGoal, setWeightGoal] = useState(0);
-  const { token, user: userContext } = useContext(AuthContext);
+  const { user: userContext, getToken } = useContext(AuthContext);
 
-  // console.log({ token });
-  console.log(userContext);
+  const navigate = useNavigate()
+
   const getProfile = async () => {
-    function getToken() {
-      return localStorage.getItem("token");
-    }
-    const currentToken = getToken();
     try {
-      // const response = await myApi.get("/api/board/profile", {
-      //   headers: { Authorization: token },
-      // });
-      // console.log(token);
       const response = await axios.get(
         "http://localhost:5005/api/board/profile",
         {
-          headers: { Authorization: `Bearer ${currentToken}` },
+          headers: { Authorization: `Bearer ${getToken()}` },
         }
       );
 
@@ -45,15 +37,15 @@ function Profile(props) {
   };
 
   useEffect(() => {
-    //getProfile();
+    getProfile();
   }, []);
 
   const handleDelete = async () => {
     try {
       await myApi.delete("/api/board/profile", {
-        headers: { Authorization: `Bearer ${currentToken}` },
+        headers: { Authorization: `Bearer ${getToken()}` },
       });
-      // await axios.delete(`http://localhost:5005/api/jokes/${params.jokeId}`)
+      navigate("/createprofile")
     } catch (error) {
       console.error(error);
     }
@@ -67,7 +59,7 @@ function Profile(props) {
 
   return (
     <div>
-      <h1>Welcome {userContext.username}</h1>
+      <h1>Welcome {userContext?.username}</h1>
       <p>Gender : {gender}</p>
       <p>Age : {age}</p>
       <p>Height : {currentHeight}</p>
