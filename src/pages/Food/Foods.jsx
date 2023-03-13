@@ -5,7 +5,7 @@ import ConsumeFoods from "./ConsumeFoods";
 function Foods() {
 
   const [foods, setFoods] = useState([])
-  const [oneFood, setOneFoods] = useState([])
+  const [foodsConsumed, setfoodsConsumed] = useState([])
 
   function getToken() {
     return localStorage.getItem("token");
@@ -23,24 +23,36 @@ function Foods() {
     }
   }
 
-
-  //Consume foods added by user PROBLEME A REGLER
+  //add a consume add in the database adding with the button "+"
   const getOneFood = async (foodId) =>{
     const currentToken = getToken();
     try {
-    const response= await axios.get(`http://localhost:5005/api/board/foods/${foodId}`,{
+    // par pur hasard j'ai essayé de mettre foodId en deuxieme argument comme le montre dans les tuto axios pour le post mais faut demander au TI pourquoi car je comprends pas trop, quand on appuie ca ajoute bien
+    const response= await axios.post(`http://localhost:5005/api/board/foods/${foodId}`,foodId,{
     headers: { Authorization: `Bearer ${currentToken}` }})
-    console.log(response.data)
-    setOneFoods(response.data.food)
+      getAllFoodsConsumed()
     } catch (error) {
       console.log(error)
     }
   }
 
- 
+  // all foods consumed
+  const getAllFoodsConsumed= async() => {
+    const currentToken = getToken();
+    try {
+      const response = await axios.get('http://localhost:5005/api/board/foods/consumed', {
+      headers: { Authorization: `Bearer ${currentToken}` }})
+      // console.log(response.data.foodConsumed)
+      setfoodsConsumed(response.data.foodConsumed)
+    } catch (error) {
+      console.log(error)
+    }
+  }
+
 
   useEffect(() => {
     getAllFoods()
+    getAllFoodsConsumed()
   },[])
 
 
@@ -50,7 +62,7 @@ function Foods() {
           <div className="searchBarFood">
             <input type="text"  placeholder=" Example : egg" />
           </div>
-          <ConsumeFoods oneFood={oneFood} />
+          <ConsumeFoods foodsConsumed={foodsConsumed} getAllFoodsConsumed={getAllFoodsConsumed} />
           <h3>Food storage ( portion : 100g)</h3>
           <div className="foodStorage">
             {foods.map((eachFood) => {
@@ -60,7 +72,7 @@ function Foods() {
                   <p>Calories : {eachFood.calories} kCal</p>
                   <p>carbohydrates : {eachFood.carbohydrates} g</p>
                   <p> proteins : {eachFood.protein} g</p>
-                  <button onClick={() => getOneFood(eachFood._id)}>+</button>
+                  <button className="addBtn" onClick={() => getOneFood(eachFood._id)}>+</button>
                 </div>
               )
             })}
