@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState} from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { Navigate, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../context/AuthContext";
 import axios from "axios";
@@ -13,7 +13,7 @@ function Profile() {
   const [weightGoal, setWeightGoal] = useState(0);
   const { user: userContext, getToken } = useContext(AuthContext);
 
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
   const getProfile = async () => {
     try {
@@ -30,7 +30,6 @@ function Profile() {
       setCurrentWeight(response.data.currentWeight);
       setWeightGoal(response.data.weightGoal);
       setUser(response.data.user.username);
-      console.log(response.data);
     } catch (error) {
       console.log(error);
     }
@@ -45,7 +44,7 @@ function Profile() {
       await myApi.delete("/api/board/profile", {
         headers: { Authorization: `Bearer ${getToken()}` },
       });
-      navigate("/createprofile")
+      navigate("/createprofile");
     } catch (error) {
       console.error(error);
     }
