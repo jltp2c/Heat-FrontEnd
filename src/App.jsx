@@ -10,7 +10,7 @@ import Presentation from "../src/pages/Presentation/Presentation";
 import Profile from "../src/pages/Profile/Profile";
 import Signup from "../src/pages/Signup/Signup";
 import ProtectedRoute from "./pages/Navigation/ProtectedRoute";
-
+import UpdateProfile from "./pages/UpdateProfile/UpdateProfile";
 
 function App() {
   return (
@@ -25,9 +25,14 @@ function App() {
           <Route element={<Layout />}>
             <Route path="/board" element={<Board />} />
             <Route path="/board/profile" element={<Profile />} />
+            <Route
+              path="/board/profile/update/:id"
+              element={<UpdateProfile />}
+            />
+
             <Route path="/board/foods" element={<Food />} />
             <Route path="*" element={<Error />} />
-        </Route>
+          </Route>
         </Route>
       </Routes>
     </div>

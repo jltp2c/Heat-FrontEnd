@@ -5,18 +5,16 @@ import { useNavigate } from "react-router-dom";
 
 function CreateProfile() {
   const [gender, setGender] = useState("disabled");
-  const [age, setAge] = useState(0);
-  const [currentHeight, setCurrentHeight] = useState(0);
-  const [currentWeight, setCurrentWeight] = useState(0);
-  const [weightGoal, setWeightGoal] = useState(0);
-
+  const [age, setAge] = useState("");
+  const [currentHeight, setCurrentHeight] = useState("");
+  const [currentWeight, setCurrentWeight] = useState("");
+  const [weightGoal, setWeightGoal] = useState("");
+  const navigate = useNavigate();
 
   function getToken() {
     return localStorage.getItem("token");
   }
   const currentToken = getToken();
-
-  const navigate = useNavigate();
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -36,10 +34,10 @@ function CreateProfile() {
 
       if (response.status === 201) {
         setGender("");
-        setAge(0);
-        setCurrentHeight(0);
-        setCurrentWeight(0);
-        setWeightGoal(0);
+        setAge("");
+        setCurrentHeight("");
+        setCurrentWeight("");
+        setWeightGoal("");
         navigate("/board");
       }
       console.log(response);
@@ -47,13 +45,16 @@ function CreateProfile() {
       console.log(error);
     }
   };
+
+  // if (!age) {
+  //   return <div className="Loading">Loading!</div>;
+  // }
   return (
     <form onSubmit={handleSubmit}>
       <div>
         <label htmlFor="category">Gender: </label>
         <option disabled value="-1">
-          {" "}
-          Select a category{" "}
+          Select a category
         </option>{" "}
         <select
           value={gender}
@@ -83,6 +84,7 @@ function CreateProfile() {
             min={18}
             value={age}
             onChange={(event) => setAge(event.target.value)}
+            placeholder="18"
           />
         </label>
       </div>
@@ -95,7 +97,8 @@ function CreateProfile() {
             id="currentHeight"
             value={currentHeight}
             onChange={(event) => setCurrentHeight(event.target.value)}
-          />{" "}
+            placeholder="180"
+          />
           cms
         </label>
       </div>
@@ -108,6 +111,7 @@ function CreateProfile() {
             id="currentWeight"
             value={currentWeight}
             onChange={(event) => setCurrentWeight(event.target.value)}
+            placeholder="80"
           />
           kgs
         </label>
@@ -121,6 +125,7 @@ function CreateProfile() {
             id="weightGoal"
             value={weightGoal}
             onChange={(event) => setWeightGoal(event.target.value)}
+            placeholder="70"
           />
           kgs
         </label>
