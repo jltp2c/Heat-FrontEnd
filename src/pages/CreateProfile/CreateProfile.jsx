@@ -83,6 +83,7 @@ function CreateProfile() {
             id="age"
             min={18}
             value={age}
+            pat
             onChange={(event) => setAge(event.target.value)}
           />
         </label>
