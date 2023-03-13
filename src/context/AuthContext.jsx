@@ -34,10 +34,11 @@ function AuthContextWrapper(props) {
       const response = await myApi.get("/api/auth/", {
         headers: { Authorization: `Bearer ${currentToken}` },
       });
+      console.log(response);
       // console.log("response from myApi.get('/api/auth/') is", response);
       if (response.status === 200) {
         setUser(response.data);
-    
+
         setIsloading(false);
       }
     } catch (error) {

@@ -3,12 +3,17 @@ import React, { useContext, useState } from "react";
 import { AuthContext } from "../../context/AuthContext.jsx";
 
 function CreateProfile() {
-  const [gender, setGender] = useState("");
+  const [gender, setGender] = useState("disabled");
   const [age, setAge] = useState(0);
   const [currentHeight, setCurrentHeight] = useState(0);
   const [currentWeight, setCurrentWeight] = useState(0);
   const [weightGoal, setWeightGoal] = useState(0);
-  const { token } = useContext(AuthContext);
+  // const { token } = useContext(AuthContext);
+
+  function getToken() {
+    return localStorage.getItem("token");
+  }
+  const currentToken = getToken();
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -21,9 +26,10 @@ function CreateProfile() {
     };
     try {
       const response = await myApi.post("/api/board/profile", profileToCreate, {
-        headers: { Authorization: token },
+        headers: { Authorization: `Bearer ${currentToken}` },
       });
-      console.log(response);
+
+      // console.log(response);
 
       if (response.status === 201) {
         setGender("");
@@ -41,15 +47,27 @@ function CreateProfile() {
     <form onSubmit={handleSubmit}>
       <div>
         <label htmlFor="category">Gender: </label>
+        <option disabled value="-1">
+          {" "}
+          Select a category{" "}
+        </option>{" "}
         <select
           value={gender}
           name=""
-          id=""
+          id="gender"
           onChange={(event) => setGender(event.target.value)}
         >
-          <option value="man">Man</option>
-          <option value="woman">Woman</option>
+          <option disabled value="disabled">
+            Gender :
+          </option>
+          <option value="Man">Man</option>
+          <option value="Woman">Woman</option>
         </select>
+        {/* // <legend>Gender:</legend>
+        // <input type="checkbox" id="man" name="man" value={gender} />
+        // <label htmlFor="man">Man</label>
+        // <input type="checkbox" id="woman" name="woman" value={gender} />
+        // <label htmlFor="woman">Woman</label> */}
       </div>
 
       <div>
@@ -58,6 +76,7 @@ function CreateProfile() {
           <input
             type="number"
             id="age"
+            min={18}
             value={age}
             onChange={(event) => setAge(event.target.value)}
           />
