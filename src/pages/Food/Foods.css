@@ -10,3 +10,27 @@
     border: 2px solid black;
     background-color: grey;
 }
+
+
+
+.OneFoodConsumed {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    border: 1px solid grey;
+    border-radius: 10px;
+    margin: 10px;
+}
+
+.titles {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    border: 1px solid grey;
+    border-radius: 10px;
+    margin: 10px;
+}
+
+.addBtn {
+    color: green;
+}
