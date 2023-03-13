@@ -1,7 +1,6 @@
 import myApi from "../../service/service.js";
 import React from "react";
-import { useContext, useState } from "react";
-import { AuthContext } from "../../context/AuthContext.jsx";
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 function CreateProfile() {
@@ -10,7 +9,7 @@ function CreateProfile() {
   const [currentHeight, setCurrentHeight] = useState(0);
   const [currentWeight, setCurrentWeight] = useState(0);
   const [weightGoal, setWeightGoal] = useState(0);
-  // const { token } = useContext(AuthContext);
+
 
   function getToken() {
     return localStorage.getItem("token");
@@ -83,7 +82,6 @@ function CreateProfile() {
             id="age"
             min={18}
             value={age}
-            pat
             onChange={(event) => setAge(event.target.value)}
           />
         </label>

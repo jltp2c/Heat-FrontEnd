@@ -48,6 +48,7 @@ function AuthContextWrapper(props) {
     }
   }
 
+
   useEffect(() => {
     authenticateUser();
   }, []);
@@ -55,7 +56,7 @@ function AuthContextWrapper(props) {
   // console.log("user is", user);
   return (
     <AuthContext.Provider
-      value={{ storeToken, user, authenticateUser, removeToken, token }}
+      value={{ storeToken, user, authenticateUser, removeToken, token, getToken }}
     >
       {props.children}
     </AuthContext.Provider>
