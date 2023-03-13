@@ -8,6 +8,7 @@ function Foods() {
   const [foods, setFoods] = useState([])
   const [foodsConsumed, setfoodsConsumed] = useState([])
   const {user : userContext} = useContext(AuthContext);
+  
 
 
 // all storage food
@@ -49,6 +50,22 @@ function Foods() {
   }
 
 
+  const searchBar = (foodToFind) =>{
+    const search = foods.filter(food => food.name.toLowerCase().includes(foodToFind.toLowerCase()))
+    setFoods(search)
+  }
+
+    const handleSearch = (e) =>{
+      console.log(e.target.value);
+      if( e.target.value !== ""){
+        searchBar(e.target.value)
+      }else{
+      getAllFoods()
+      setFoods(foods)
+    }
+  }
+
+
   useEffect(() => {
     getAllFoods()
     getAllFoodsConsumed()
@@ -59,7 +76,7 @@ function Foods() {
         <div className="Container">
           <h2>Add your Meal !</h2>
           <div className="searchBarFood">
-            <input type="text"  placeholder=" Example : egg" />
+            <input type="text" onChange={handleSearch} placeholder=" Example : egg" />
           </div>
           <ConsumeFoods foodsConsumed={foodsConsumed} getAllFoodsConsumed={getAllFoodsConsumed} userContext={userContext} />
           <h3>Food storage ( portion : 100g)</h3>
