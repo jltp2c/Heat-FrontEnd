@@ -36,8 +36,20 @@ function AuthContextWrapper(props) {
       const response = await myApi.get("/api/auth/", {
         headers: { Authorization: `Bearer ${currentToken}` },
       });
-      // console.log("response from myApi.get('/api/auth/') is", response);
+      // console.log(
+      //   "response from myApi.get('/api/auth/') is",
+      //   response.data.hasProfile
+      // );
       if (response.status === 200) {
+        const { data: profile } = await myApi.get("/api/board/profile", {
+          headers: { Authorization: `Bearer ${getToken()}` },
+        });
+
+        if (profile) {
+          delete profile.user;
+          response.data.profile = profile;
+        }
+        console.log(response.data);
         setUser(response.data);
 
         setIsloading(false);
@@ -59,6 +71,7 @@ function AuthContextWrapper(props) {
       value={{
         storeToken,
         user,
+        setUser,
         authenticateUser,
         removeToken,
         token,

@@ -5,48 +5,17 @@ import axios from "axios";
 import myApi from "../../service/service.js";
 
 function Profile() {
-  const [user, setUser] = useState("");
-  const [gender, setGender] = useState("");
-  const [age, setAge] = useState(0);
-  const [currentHeight, setCurrentHeight] = useState(0);
-  const [currentWeight, setCurrentWeight] = useState(0);
-  const [weightGoal, setWeightGoal] = useState(0);
-  const [idProfile, setIdProfile] = useState("");
-  const { user: userContext, getToken } = useContext(AuthContext);
+  const { user, setUser, getToken } = useContext(AuthContext);
 
   const navigate = useNavigate();
-
-  const getProfile = async () => {
-    try {
-      const response = await axios.get(
-        "http://localhost:5005/api/board/profile",
-        {
-          headers: { Authorization: `Bearer ${getToken()}` },
-        }
-      );
-
-      setGender(response.data.gender);
-      setAge(response.data.age);
-      setCurrentHeight(response.data.currentHeight);
-      setCurrentWeight(response.data.currentWeight);
-      setWeightGoal(response.data.weightGoal);
-      setUser(response.data.user.username);
-      setIdProfile(response.data._id);
-    } catch (error) {
-      console.log(error);
-    }
-  };
-
-  useEffect(() => {
-    getProfile();
-  }, []);
 
   const handleDelete = async () => {
     try {
       await myApi.delete("/api/board/profile", {
         headers: { Authorization: `Bearer ${getToken()}` },
       });
-      navigate("/createprofile");
+      setUser({ ...user, profile: null });
+      return navigate("/createprofile");
     } catch (error) {
       console.error(error);
     }
@@ -59,12 +28,14 @@ function Profile() {
   };
 
   const handleUpdate = async () => {
-    navigate(`/board/profile/update/${idProfile}`);
+    navigate(`/board/profile/update/${user.profile._id}`);
   };
 
+  const { gender, age, currentHeight, currentWeight, weightGoal } =
+    user.profile;
   return (
     <div>
-      <h1>Welcome {userContext?.username}</h1>
+      <h1>Welcome {user?.username}</h1>
       <p>Gender : {gender}</p>
       <p>Age : {age}</p>
       <p>Height : {currentHeight}</p>

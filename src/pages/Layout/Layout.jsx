@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import { Outlet, NavLink } from "react-router-dom";
+import { Outlet, NavLink, Navigate } from "react-router-dom";
 import { AuthContext } from "../../context/AuthContext";
 
 function Layout() {
@@ -7,6 +7,10 @@ function Layout() {
   function handleLogOut() {
     removeToken();
     authenticateUser();
+  }
+
+  if (!user.profile) {
+    return <Navigate to="/createprofile" />;
   }
   return (
     <div>

@@ -11,17 +11,22 @@ import Profile from "../src/pages/Profile/Profile";
 import Signup from "../src/pages/Signup/Signup";
 import ProtectedRoute from "./pages/Navigation/ProtectedRoute";
 import UpdateProfile from "./pages/UpdateProfile/UpdateProfile";
-
+import IsLoggedIn from "./pages/Navigation/IsLoggedIn";
+import HasProfile from "./pages/Navigation/HasProfile";
 function App() {
   return (
     <div className="App">
       <Routes>
-        <Route path="/" element={<Presentation />} />
-        <Route path="/auth/signup" element={<Signup />} />
-        <Route path="/auth/login" element={<Login />} />
+        <Route element={<IsLoggedIn />}>
+          <Route path="/" element={<Presentation />} />
+          <Route path="/auth/signup" element={<Signup />} />
+          <Route path="/auth/login" element={<Login />} />
+        </Route>
 
         <Route element={<ProtectedRoute />}>
-          <Route path="/createprofile" element={<CreateProfile />} />
+          <Route element={<HasProfile />}>
+            <Route path="/createprofile" element={<CreateProfile />} />
+          </Route>
           <Route element={<Layout />}>
             <Route path="/board" element={<Board />} />
             <Route path="/board/profile" element={<Profile />} />
@@ -31,8 +36,8 @@ function App() {
             />
 
             <Route path="/board/foods" element={<Food />} />
-            <Route path="*" element={<Error />} />
           </Route>
+          <Route path="*" element={<Error />} />
         </Route>
       </Routes>
     </div>
