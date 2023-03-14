@@ -15,9 +15,7 @@ import IsLoggedIn from "./pages/Navigation/IsLoggedIn";
 import HasProfile from "./pages/Navigation/HasProfile";
 
 function App() {
-  
   return (
-
     <div className="App">
       <Routes>
         <Route element={<IsLoggedIn />}>
@@ -30,6 +28,7 @@ function App() {
           <Route element={<HasProfile />}>
             <Route path="/createprofile" element={<CreateProfile />} />
           </Route>
+
           <Route element={<Layout />}>
             <Route path="/board" element={<Board />} />
             <Route path="/board/profile" element={<Profile />} />
@@ -40,11 +39,11 @@ function App() {
 
             <Route path="/board/foods" element={<Food />} />
           </Route>
-          <Route path="*" element={<Error />} />
         </Route>
+
+        <Route path="*" element={<Error />} />
       </Routes>
     </div>
-
   );
 }
 

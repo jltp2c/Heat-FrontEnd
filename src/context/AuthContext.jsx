@@ -44,12 +44,10 @@ function AuthContextWrapper(props) {
         const { data: profile } = await myApi.get("/api/board/profile", {
           headers: { Authorization: `Bearer ${getToken()}` },
         });
-
         if (profile) {
           delete profile.user;
           response.data.profile = profile;
         }
-        console.log(response.data);
         setUser(response.data);
 
         setIsloading(false);

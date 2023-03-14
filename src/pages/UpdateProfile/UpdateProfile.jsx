@@ -1,4 +1,3 @@
-import axios from "axios";
 import React, { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../context/AuthContext";
 import myApi from "../../service/service.js";
@@ -15,12 +14,9 @@ const UpdateProfile = () => {
 
   const getProfileToUpdate = async () => {
     try {
-      const response = await axios.get(
-        "http://localhost:5005/api/board/profile",
-        {
-          headers: { Authorization: `Bearer ${getToken()}` },
-        }
-      );
+      const response = await myApi.get("/api/board/profile", {
+        headers: { Authorization: `Bearer ${getToken()}` },
+      });
 
       console.log(response.data);
       setGender(response.data.gender);

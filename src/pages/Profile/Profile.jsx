@@ -1,7 +1,6 @@
 import React, { useContext, useEffect, useState } from "react";
 import { Navigate, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../context/AuthContext";
-import axios from "axios";
 import myApi from "../../service/service.js";
 
 function Profile() {
