@@ -11,31 +11,35 @@ import Profile from "../src/pages/Profile/Profile";
 import Signup from "../src/pages/Signup/Signup";
 import ProtectedRoute from "./pages/Navigation/ProtectedRoute";
 import UpdateProfile from "./pages/UpdateProfile/UpdateProfile";
+import { AuthContext } from "./context/AuthContext";
+
+import React, { useContext } from "react";
+
 
 function App() {
+  
   return (
-    <div className="App">
-      <Routes>
-        <Route path="/" element={<Presentation />} />
-        <Route path="/auth/signup" element={<Signup />} />
-        <Route path="/auth/login" element={<Login />} />
+   <div className="App">
+  <Routes>
+    <Route path="/" element={<Presentation />} />
+    <Route path="/auth/signup" element={<Signup />} />
+    <Route path="/auth/login" element={<Login />} />
 
-        <Route element={<ProtectedRoute />}>
-          <Route path="/createprofile" element={<CreateProfile />} />
-          <Route element={<Layout />}>
-            <Route path="/board" element={<Board />} />
-            <Route path="/board/profile" element={<Profile />} />
-            <Route
-              path="/board/profile/update/:id"
-              element={<UpdateProfile />}
-            />
-
-            <Route path="/board/foods" element={<Food />} />
-            <Route path="*" element={<Error />} />
-          </Route>
-        </Route>
-      </Routes>
-    </div>
+    <Route element={<ProtectedRoute />}>
+      <Route path="/createprofile" element={<CreateProfile />}/ >
+      <Route element={<Layout />}>
+        <Route path="/board" element={<Board />} />
+        <Route path="/board/profile" element={<Profile />} />
+        <Route
+          path="/board/profile/update/:id"
+          element={<UpdateProfile />}
+        />
+        <Route path="/board/foods" element={<Food />} />
+        <Route path="*" element={<Error />} />
+      </Route>
+    </Route>
+  </Routes>
+</div>
   );
 }
 

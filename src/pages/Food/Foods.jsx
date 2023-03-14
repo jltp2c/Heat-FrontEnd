@@ -2,13 +2,16 @@ import axios from "axios";
 import React, { useEffect, useState,useContext } from "react";
 import ConsumeFoods from "./ConsumeFoods";
 import { AuthContext } from "../../context/AuthContext";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 function Foods() {
 
   const [foods, setFoods] = useState([])
   const [foodsConsumed, setfoodsConsumed] = useState([])
   const [searchValue, setSearchValue] = useState("")
-  const {user : userContext} = useContext(AuthContext);
+  const {user : userContext, authenticateUser} = useContext(AuthContext);
+  const notify = () => toast("You add one food !");
   
 
 // all storage food
@@ -18,6 +21,7 @@ function Foods() {
       headers: { Authorization: `Bearer ${localStorage.getItem("token")}` }})
       // console.log(response.data.food)
       setFoods(response.data.food)
+     
     } catch (error) {
       console.log(error)
     }
@@ -31,6 +35,7 @@ function Foods() {
     headers: { Authorization: `Bearer ${localStorage.getItem("token")}` }})
       getAllFoodsConsumed()
       console.log(response)
+       notify()
     } catch (error) {
       console.log(error)
     }
@@ -71,11 +76,13 @@ function Foods() {
   useEffect(() => {
     getAllFoods()
     getAllFoodsConsumed()
+   
   },[])
 
 
   return(
         <div className="Container">
+             <ToastContainer/>
           <h2>Add your Meal !</h2>
           <div className="searchBarFood">
             <input type="text" onChange={handleSearch} placeholder=" Example : egg" />
@@ -83,8 +90,10 @@ function Foods() {
           <ConsumeFoods foodsConsumed={foodsConsumed} getAllFoodsConsumed={getAllFoodsConsumed} userContext={userContext} />
           <h3>Food storage ( portion : 100g)</h3>
           <div className="foodStorage">
-            {foods.map((eachFood) => {
+            { foods.map((eachFood) => {
+              
               return (
+                
                 <div key={eachFood._id} className="cardContainerFood">
                   <p>{eachFood.name}</p>
                   <p>Calories : {eachFood.calories} kCal</p>

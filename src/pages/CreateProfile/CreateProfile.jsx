@@ -68,11 +68,7 @@ function CreateProfile() {
           <option value="Man">Man</option>
           <option value="Woman">Woman</option>
         </select>
-        {/* // <legend>Gender:</legend>
-        // <input type="checkbox" id="man" name="man" value={gender} />
-        // <label htmlFor="man">Man</label>
-        // <input type="checkbox" id="woman" name="woman" value={gender} />
-        // <label htmlFor="woman">Woman</label> */}
+     
       </div>
 
       <div>
