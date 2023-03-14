@@ -10,6 +10,7 @@ function ProtectedRoute() {
     console.log("trying to access protected route - redirecting", user);
     return <Navigate to="/" />;
   }
+
   return <Outlet />;
 }
 

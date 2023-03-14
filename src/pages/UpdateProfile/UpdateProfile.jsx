@@ -73,7 +73,7 @@ const UpdateProfile = () => {
           <label htmlFor="category">Gender: </label>
           <option disabled value="-1">
             Select a category
-          </option>{" "}
+          </option>
           <select
             value={gender}
             name=""

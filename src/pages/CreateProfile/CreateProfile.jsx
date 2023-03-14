@@ -1,7 +1,8 @@
 import myApi from "../../service/service.js";
-import React from "react";
+import React, { useContext } from "react";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { AuthContext } from "../../context/AuthContext.jsx";
 
 function CreateProfile() {
   const [gender, setGender] = useState("disabled");
@@ -9,6 +10,7 @@ function CreateProfile() {
   const [currentHeight, setCurrentHeight] = useState("");
   const [currentWeight, setCurrentWeight] = useState("");
   const [weightGoal, setWeightGoal] = useState("");
+  const { setUser } = useContext(AuthContext);
   const navigate = useNavigate();
 
   function getToken() {
@@ -29,15 +31,10 @@ function CreateProfile() {
       const response = await myApi.post("/api/board/profile", profileToCreate, {
         headers: { Authorization: `Bearer ${currentToken}` },
       });
-
-      // console.log(response);
+      const { data: profile } = response;
 
       if (response.status === 201) {
-        setGender("");
-        setAge("");
-        setCurrentHeight("");
-        setCurrentWeight("");
-        setWeightGoal("");
+        setUser((user) => ({ ...user, profile }));
         navigate("/board");
       }
       console.log(response);
