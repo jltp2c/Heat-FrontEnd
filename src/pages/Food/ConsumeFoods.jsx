@@ -1,22 +1,14 @@
-import React, { useState } from "react";
+import React, {useContext } from "react";
 import myApi from "../../service/service";
+import { AuthContext } from "../../context/AuthContext";
 
 export default function ConsumeFoods({
   foodsConsumed,
   getAllFoodsConsumed,
   userContext,
 }) {
-  const [currentWeight, setCurrentWeight] = useState(0);
-  const [currentUserProfile, setCurrentUserProfile] = useState("");
-
-  // const getUserInfo = async () => {
-  //   try {
-  //     const res = await axios.get('http://localhost:5005/api/board/profile')
-  //     console.log(res)
-  //   } catch (error) {
-  //     console.log(error)
-  //   }
-  // }
+ 
+  const { user } = useContext(AuthContext);
 
   const handleDelete = async (foodId) => {
     try {
@@ -55,20 +47,7 @@ export default function ConsumeFoods({
     return total.toFixed(2);
   };
 
-  const currentWeightProtein = () => {
-    return currentWeight * 0.8;
-  };
 
-  const getProfile = async () => {
-    const response = await myApi.get("/api/board/profile", {
-      headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
-    });
-    // console.log("RESPONSE :",response.data.currentWeight)
-    setCurrentWeight(response.data.currentWeight);
-    setCurrentUserProfile(response.data.user._id);
-  };
-
-  getProfile();
   return (
     <div className="containerFoodConsumed">
       <h3>My Meal</h3>
@@ -76,15 +55,13 @@ export default function ConsumeFoods({
         <h4> Profile : {userContext?.username}</h4>
         <h4>Daily Calorie : {caloriesTotal()} kCal</h4>
         <h4>
-          Protein(s) : {ProteinTotal()} g / {currentWeightProtein()} g
+          Protein(s) : {ProteinTotal()} g / {user.profile.currentWeight} g
         </h4>
         <h4>Carbohydrate(s) : {carboTotal()} g </h4>
       </div>
 
       {foodsConsumed.map((foodConsumed) => {
         return (
-          //ternaire pour ne pas afficher les foods consumes quand un utilisateur se connecte sur un autre compte
-          userContext._id === foodConsumed.user ? (
             <div key={foodConsumed._id} className="OneFoodConsumed">
               <p>{foodConsumed.name} (100g)</p>
               <p>Calories : {foodConsumed.calories} kCal</p>
@@ -97,9 +74,7 @@ export default function ConsumeFoods({
                 {" "}
                 ❌{" "}
               </button>
-              <h4>Daily Calorie : {caloriesTotal()} kCal</h4>
             </div>
-          ) : null
         );
       })}
     </div>
