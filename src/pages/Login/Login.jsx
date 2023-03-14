@@ -23,10 +23,11 @@ export default function Login() {
 
     try {
       const response = await myApi.post("/api/auth/login", userToLogin);
-      console.log("response:", response);
+      // console.log("response:", response.data.hasProfile);
       //the storeToken a authenticateUser functions from the AuthContext file are used here and performed on the responde.data.token
       storeToken(response.data.token);
       await authenticateUser();
+      // console.log(response.data.hasProfile);
 
       if (response.status === 200) {
         //hasProfile condition is initialized in the backend route and returns a boleean value
@@ -72,4 +73,3 @@ export default function Login() {
     </form>
   );
 }
-
