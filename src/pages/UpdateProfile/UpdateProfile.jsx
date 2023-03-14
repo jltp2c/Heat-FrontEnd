@@ -1,6 +1,7 @@
 import React, { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../context/AuthContext";
 import myApi from "../../service/service.js";
+import { useNavigate } from "react-router-dom";
 
 const UpdateProfile = () => {
   const [user, setUser] = useState("");
@@ -9,6 +10,7 @@ const UpdateProfile = () => {
   const [currentWeight, setCurrentWeight] = useState(0);
   const [weightGoal, setWeightGoal] = useState(0);
   const [idProfile, setIdProfile] = useState("");
+  const navigate = useNavigate()
 
   const { user: userContext, getToken } = useContext(AuthContext);
 
@@ -24,6 +26,7 @@ const UpdateProfile = () => {
       setCurrentWeight(response.data.currentWeight);
       setWeightGoal(response.data.weightGoal);
       setIdProfile(response.data._id);
+      
     } catch (error) {
       console.log(error);
     }
@@ -49,13 +52,12 @@ const UpdateProfile = () => {
           headers: { Authorization: `Bearer ${getToken()}` },
         }
       );
-
-      // console.log(response);
-
+      
       if (profilUpdated.status === 202) {
-        console.log(profilUpdated);
+        console.log(profileToUpdate)
+        navigate("/board/profile")
       }
-      //   console.log(response);
+
     } catch (error) {
       console.log(error);
     }
@@ -102,20 +104,6 @@ const UpdateProfile = () => {
             />
           </label>
         </div>
-
-        {/* <div>
-          <label htmlFor="height">
-            Height:&nbsp;
-            <input
-              type="number"
-              id="currentHeight"
-              value={currentHeight}
-              onChange={(event) => setCurrentHeight(event.target.value)}
-              placeholder="180"
-            />
-            cms
-          </label>
-        </div> */}
 
         <div>
           <label htmlFor="weight">
