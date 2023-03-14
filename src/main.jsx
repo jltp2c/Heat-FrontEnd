@@ -7,6 +7,7 @@ import AuthWrapper from "../src/context/AuthContext.jsx";
 import "./pages/Food/Foods.css"
 import "./pages/Layout/Layout.css"
 import "./pages/Presentation/Presentation.css"
+import "../src/pages/Board/Board.css";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
