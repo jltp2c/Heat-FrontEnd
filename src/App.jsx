@@ -14,6 +14,7 @@ import UpdateProfile from "./pages/UpdateProfile/UpdateProfile";
 import IsLoggedIn from "./pages/Navigation/IsLoggedIn";
 import HasProfile from "./pages/Navigation/HasProfile";
 
+
 function App() {
   return (
     <div className="App">

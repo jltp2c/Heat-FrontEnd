@@ -17,9 +17,10 @@ const onCloseModal = () => setOpen(false);
  // all foods consumed
   const getAllFoodsConsumed = async () => {
     try {
-      const response = await myApi.get("/api/board/foods/consumed", {
+      const response = await myApi.get(`/api/board/foods/consumed?date=${date}`, {
         headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
       });
+
 
       setfoodsConsumed(response.data.foodConsumed);
     } catch (error) {
@@ -28,20 +29,28 @@ const onCloseModal = () => setOpen(false);
   };
 
   useEffect(() => {
-    getAllFoodsConsumed();
+    getAllFoodsConsumed();    
   }, [date]);
 
-  const previousDate = () => {
-    const copy = new Date(date.toString());
-    copy.setDate(copy.getDate() - 1);
-    setDate(copy);
-  };
+ 
 
-  const nextDate = () => {
-    const copy = new Date(date.toString());
-    copy.setDate(copy.getDate() + 1);
-    setDate(copy);
-  };
+const previousDate = () => {
+  const copy = new Date(date.toString())
+  copy.setDate(copy.getDate() - 1)
+  setDate(copy)
+  console.log(date)
+}
+
+const nextDate = () => {
+  const copy = new Date(date.toString())
+  copy.setDate(copy.getDate() + 1)
+  console.log(date)
+  setDate(copy)
+  console.log(copy.toString())
+}
+
+
+
     
  return (
    <div>
