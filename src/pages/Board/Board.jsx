@@ -1,7 +1,10 @@
+
 import React, { useState, useEffect } from 'react';
 import 'react-responsive-modal/styles.css';
 import { Modal } from 'react-responsive-modal';
 import myApi from "../../service/service.js"
+import ReviewsBar from "../../components/Profile/ReviewsBar";
+
 
 const Board = () => {
 
@@ -17,41 +20,28 @@ const onCloseModal = () => setOpen(false);
       const response = await myApi.get("/api/board/foods/consumed", {
         headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
       });
-      for (let i = 0 ; i < foodsConsumed.length; i++){
-        console.log(response.data.foodConsumed)
-      }
+
       setfoodsConsumed(response.data.foodConsumed);
     } catch (error) {
       console.log(error);
     }
   };
 
-
-   useEffect(() => {
+  useEffect(() => {
     getAllFoodsConsumed();
-  }, []);
+  }, [date]);
 
-  const getTodayDate = () =>{
-      const event = new Date();
-    const [today] = event.toISOString().split("T")
-    console.log(today);
-      return today
-  }
+  const previousDate = () => {
+    const copy = new Date(date.toString());
+    copy.setDate(copy.getDate() - 1);
+    setDate(copy);
+  };
 
-const previousDate = () => {
-  const copy = new Date(date.toString())
-  copy.setDate(copy.getDate() - 1)
-  console.log(date)
-  setDate(copy)
-}
-
-
-const nextDate = () => {
-  const copy = new Date(date.toString())
-  copy.setDate(copy.getDate() + 1)
-  console.log(date)
-  setDate(copy)
-}
+  const nextDate = () => {
+    const copy = new Date(date.toString());
+    copy.setDate(copy.getDate() + 1);
+    setDate(copy);
+  };
     
  return (
    <div>
@@ -59,7 +49,11 @@ const nextDate = () => {
        <button onClick={previousDate}>←</button>
        <button onClick={()=>setDate(() => new Date())}>{date.toDateString()}</button> 
        <button onClick={nextDate}>→</button>
+      
      </div>
+      <div>
+        <ReviewsBar foodsConsumed={foodsConsumed}></ReviewsBar>
+      </div>
       <div className='modal'>
       <button onClick={onOpenModal}>My daily foods</button>
       <Modal open={open} onClose={onCloseModal} center>
@@ -82,5 +76,4 @@ const nextDate = () => {
   
 };
 
-export default Board
-
+export default Board;
