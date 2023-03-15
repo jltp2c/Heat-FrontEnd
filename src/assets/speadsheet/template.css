@@ -1,0 +1,37 @@
+.btn {
+    background-color: #C3EFB4;
+    border-radius: 30px;
+    padding: 10px;
+    width: 100px;
+    box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease 0s;
+    cursor: pointer;
+    outline: none;
+    color: black;
+}
+
+.btn:hover {
+    background-color: #2EE59D;
+    box-shadow: 0px 15px 20px rgba(46, 229, 157, 0.4);
+    color: #fff;
+    transform: translateY(-7px);
+}
+
+label {
+    display: block;
+    width: 150px;
+    float: left;
+    margin-bottom: 20px;
+}
+
+input {
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    height: 20px;
+    margin-bottom: 5px;
+    padding: 2px;
+}
+
+.form {
+    display: block;
+}
