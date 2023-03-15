@@ -1,5 +1,5 @@
-.countdownContainer {
-    width: 15rem;
+.containerTimer {
+    width: 10rem;
     height: 2rem;
     display: flex;
     justify-content: center;
@@ -8,6 +8,10 @@
     gap: 1rem;
     background-color: #FEFFC1;
     border-radius: 10px;
+}
 
-
+.timeGoal {
+    display: flex;
+    flex-direction: column;
+    margin-right: 20px;
 }

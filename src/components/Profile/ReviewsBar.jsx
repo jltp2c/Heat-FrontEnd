@@ -58,12 +58,12 @@ function ReviewsBar({ foodsConsumed }) {
     <>
       <h2>Calories</h2>
       <div className="containerInfos">
-        <p>Daily calories : {getCalories()} kCal</p>
+        <p>{`${dailyObj} kCal`}</p>
         <div className="circularProgressBarCalories">
           <CircularProgressbar
             value={getCalories()}
             maxValue={dailyObj}
-            text={`${dailyObj}Kcal`}
+            text={getCalories()}
             circleRatio={0.7}
             styles={{
               trail: {

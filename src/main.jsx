@@ -8,7 +8,7 @@ import "./pages/Food/Foods.css";
 import "./pages/Layout/Layout.css";
 import "./pages/Presentation/Presentation.css";
 import "../src/pages/Board/Board.css";
-import "../src/components/countdown/Countdown.css";
+import "../src/components/Countdown/Countdown.css";
 import "../src/components/Profile/ReviewsBar.css"
 import "../src/pages/Signup/Signup.css"
 import "../src/assets/styles/template.css"
