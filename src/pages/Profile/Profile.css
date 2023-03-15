@@ -1,0 +1,55 @@
+body {
+  background-color: whitesmoke;
+}
+
+.profileHeader {
+  margin-top: 0;
+  font-size: 2.5rem;
+}
+
+.profilContainer {
+  background-color: whitesmoke;
+  border-radius: 5%;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px,
+    rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+}
+
+.profilTopSection {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  padding-top: 0.2rem;
+}
+
+.profilInfo {
+  text-align: left;
+}
+
+.profilInfoList {
+  padding: 0;
+  margin: 0.3rem;
+}
+
+.profilLogOutBtnContainer {
+  text-align: right;
+  margin: 0;
+}
+
+.profilBottomSection {
+  padding: 1rem;
+  text-align: center;
+}
+
+.profilBtns {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.profilUpdateBtn .profilDeleteBtn {
+  border-radius: 30%;
+}
+
+.manageProfilTitle {
+  font-size: 1.5rem;
+}
