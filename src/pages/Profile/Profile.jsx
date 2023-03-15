@@ -40,7 +40,9 @@ function Profile() {
   return (
     <div>
       <header>
-        <h1 className="profileHeader">Welcome huhuhuhuh{user?.username}</h1>
+        <h1 className="profileHeader">
+          Welcome <p className="colorUsername">{user?.username} !</p>{" "}
+        </h1>
       </header>
 
       <div className="profilContainer">
@@ -85,9 +87,9 @@ function Profile() {
                   viewBox="0 0 24 24"
                   fill="none"
                   stroke="currentColor"
-                  stroke-width="2"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
                 >
                   <path d="M18.36 6.64a9 9 0 1 1-12.73 0"></path>
                   <line x1="12" y1="2" x2="12" y2="12"></line>
@@ -102,10 +104,10 @@ function Profile() {
             Missed something ? Update your profile's infos or delete it here !
           </p>
           <div className="profilBtns">
-            <button className="profilUpdateBtn" onClick={handleUpdate}>
+            <button className="btn" onClick={handleUpdate}>
               update profile
             </button>
-            <button className="profilDeleteBtn" onClick={handleDelete}>
+            <button className="profilDeleteBtn btn" onClick={handleDelete}>
               delete profile
             </button>
           </div>

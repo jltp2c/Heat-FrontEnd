@@ -51,12 +51,14 @@ function CreateProfile() {
 
   return (
     <>
+
       <div>
         <h1>New here?</h1>
         <p>Complete your profile and start your journey right now!</p>
       </div>
       <form className="createFormContainer" onSubmit={handleSubmit}>
         <div className="cat">
+
           <option disabled value="-1">
             Select a category
           </option>{" "}
@@ -69,12 +71,13 @@ function CreateProfile() {
             <option disabled value="disabled">
               Gender :
             </option>
-            <option value="man">Man</option>
-            <option value="woman">Woman</option>
+            <option value="Man">Man</option>
+            <option value="Woman">Woman</option>
           </select>
         </div>
 
         <div className="cat">
+
           <label htmlFor="age">
             Age:&nbsp;
             <input
@@ -88,7 +91,9 @@ function CreateProfile() {
           </label>
         </div>
 
+
         <div className="cat">
+
           <label htmlFor="height">
             Height:&nbsp;
             <input
@@ -102,7 +107,9 @@ function CreateProfile() {
           </label>
         </div>
 
+
         <div className="cat">
+
           <label htmlFor="weight">
             Weight:&nbsp;
             <input
@@ -116,7 +123,9 @@ function CreateProfile() {
           </label>
         </div>
 
+
         <div className="cat">
+
           <label htmlFor="weightGoal">
             My weight goal:&nbsp;
             <input

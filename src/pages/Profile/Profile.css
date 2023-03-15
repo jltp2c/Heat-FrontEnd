@@ -5,6 +5,8 @@ body {
 .profileHeader {
   margin-top: 0;
   font-size: 2.5rem;
+  margin-bottom: 3rem;
+  padding-bottom: 2rem;
 }
 
 .profilContainer {
@@ -12,6 +14,7 @@ body {
   border-radius: 5%;
   box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px,
     rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+  margin-bottom: 1.5rem;
 }
 
 .profilTopSection {
@@ -52,4 +55,8 @@ body {
 
 .manageProfilTitle {
   font-size: 1.5rem;
+}
+
+.colorUsername {
+  color: green;
 }
