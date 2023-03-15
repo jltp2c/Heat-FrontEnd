@@ -7,16 +7,38 @@
 }
 
 .cardContainerFood {
-    border: 2px solid black;
-    background-color: grey;
+
+    border-radius: 10px;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px,
+        rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
+    background-color: whitesmoke;
+    padding: 10px;
+    transition: all 1s ease;
+    font-size: 0.7rem;
+}
+
+.cardContainerFood:hover {
+    transform: scale(1.1);
+    border: 2px solid green;
+    transition: all 1s ease;
+    margin: 10px;
 }
 
 
+.containerFoodConsumed {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    align-items: center;
+}
+
+.containerFoodConsumed span {
+    font-size: 1.5rem;
+}
 
 .OneFoodConsumed {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-around;
+
     border: 1px solid grey;
     border-radius: 10px;
     margin: 10px;
@@ -26,11 +48,30 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: space-around;
-    border: 1px solid grey;
-    border-radius: 10px;
-    margin: 10px;
+    background-color: whitesmoke;
+    border-radius: 5%;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px,
+        rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+    margin: 20px;
+    padding: 10px;
 }
 
 .addBtn {
     color: green;
+    font-weight: bold;
+    font-size: 1.5rem;
+}
+
+.Container h2 {
+    margin: 20px;
+}
+
+.searchBarFood input {
+    margin: 20px;
+    height: 30px;
+    width: 200px;
+}
+
+h3 {
+    margin: 20px;
 }
