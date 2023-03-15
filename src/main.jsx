@@ -14,6 +14,8 @@ import "../src/pages/Signup/Signup.css";
 import "../src/assets/styles/template.css";
 import "../src/pages/Profile/Profile.css";
 import "../src/pages/CreateProfile/CreateProfile.css";
+import "../src/pages/Login/Login.css";
+import "animate.css";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>

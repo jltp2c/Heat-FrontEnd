@@ -39,7 +39,7 @@ export default function Signup() {
   }
 
   return (
-  <>
+    <>
       <TitleApp />
       <form onSubmit={handleSubmit}>
         <div>
@@ -80,6 +80,5 @@ export default function Signup() {
         <button className="btn">Signup</button>
       </form>
     </>
-
   );
 }

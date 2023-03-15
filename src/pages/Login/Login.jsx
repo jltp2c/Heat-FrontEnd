@@ -39,7 +39,7 @@ export default function Login() {
         }
       }
     } catch (error) {
-      console.error("error:");
+      console.error("error login");
       setError(error.response.data.message);
     }
   }
@@ -48,8 +48,7 @@ export default function Login() {
     <>
       <TitleApp />
 
-
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit} className="formLogin">
         <div>
           <label htmlFor="username">
             Username:&nbsp;
@@ -73,10 +72,9 @@ export default function Login() {
           </label>
         </div>
 
-         {error.length > 0 && <p className="error">{error}</p>}
-      <button className="btn">Login</button>
-    </form>
+        {error.length > 0 && <p className="error">{error}</p>}
+        <button className="btn">Login</button>
+      </form>
     </>
-
   );
 }
