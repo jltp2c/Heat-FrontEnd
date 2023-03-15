@@ -26,7 +26,8 @@
     padding: 1rem 2rem;
     width: 15rem;
     margin: 1rem auto;
-    color: whitesmoke;
+    color: black;
+    box-shadow: inset 0 -2px 4px rgba(0, 0, 0, 0.195);
 
     border: none;
     border-radius: 8px;
@@ -87,11 +88,18 @@ select {
 
 .btnLogoutContainer {
     position: relative;
-    background-color: white;
+
 }
 
 .btnLogout {
     position: absolute;
     bottom: 600px;
-    left: 300px;
+    left: 360px;
+    background-color: whitesmoke;
+    height: 50px;
+    width: 50px;
+    border-radius: 50%;
+    padding: 0;
+    box-shadow: rgba(44, 44, 82, 0.25) 0px 2px 5px -1px,
+        rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
 }

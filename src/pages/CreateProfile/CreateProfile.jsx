@@ -3,6 +3,7 @@ import React, { useContext } from "react";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../../context/AuthContext.jsx";
+import Confetti from "react-confetti";
 
 function CreateProfile() {
   const [gender, setGender] = useState("disabled");
@@ -13,6 +14,7 @@ function CreateProfile() {
   const navigate = useNavigate();
   const { user, setUser, authenticateUser, removeToken } =
     useContext(AuthContext);
+  const [showConfetti, setShowConfetti] = useState(false);
 
   function getToken() {
     return localStorage.getItem("token");
@@ -36,7 +38,11 @@ function CreateProfile() {
       const { data: profile } = response;
 
       if (response.status === 201) {
+        setShowConfetti(true);
         setUser((user) => ({ ...user, profile }));
+        setTimeout(() => {
+          setShowConfetti(false);
+        }, 5000);
         navigate("/board");
       }
       console.log(response);
@@ -116,6 +122,7 @@ function CreateProfile() {
         </div>
 
         <button className="specialBtn">Create my profile </button>
+        {showConfetti && <Confetti recycle={false} />}
       </form>
       <div className="btnLogoutContainer">
         <button className="btnLogout" onClick={handleLogOut}>
@@ -126,9 +133,9 @@ function CreateProfile() {
             viewBox="0 0 24 24"
             fill="none"
             stroke="currentColor"
-            stroke-width="2"
-            stroke-linecap="round"
-            stroke-linejoin="round"
+            strokeWidth="2"
+            strokeLinecap="round"
+            strokeLinejoin="round"
           >
             <path d="M18.36 6.64a9 9 0 1 1-12.73 0"></path>
             <line x1="12" y1="2" x2="12" y2="12"></line>
