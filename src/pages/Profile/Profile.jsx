@@ -31,6 +31,17 @@ function Profile() {
     return imc.toFixed(1);
   };
 
+  const calculateObjCalories = () => {
+    let dailyObj = 0;
+    if (gender === "Woman") {
+      dailyObj = 1500;
+    } else {
+      dailyObj = 1950;
+    }
+
+    return dailyObj;
+  };
+
   const handleUpdate = async () => {
     navigate(`/board/profile/update/${user.profile._id}`);
   };
@@ -73,8 +84,8 @@ function Profile() {
               {calculateImc(currentWeight, currentHeight)}
             </p>
             <p className="profilInfoList">
-              <b>Calories Goal : </b>
-              {weightGoal} kCal
+              <b>Daily Calories Goal : </b>
+              {calculateObjCalories()} kCal
             </p>
           </div>
           <div className="profilLogOutBtnContainer">

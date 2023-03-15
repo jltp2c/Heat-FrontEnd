@@ -1,0 +1,10 @@
+.error {
+  color: red;
+  padding-bottom: 1rem;
+}
+
+.formLogin {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}

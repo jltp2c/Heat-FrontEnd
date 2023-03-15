@@ -1,7 +1,7 @@
 .navBar {
   list-style: none;
   display: flex;
-  justify-content: center;
+  justify-content: space-evenly;
   align-items: center;
   gap: 2rem;
   padding: 0;
@@ -15,4 +15,5 @@
   bottom: 0;
   width: 83.5%;
   /* margin-bottom: 1.5rem; */
+  background-color: whitesmoke;
 }
