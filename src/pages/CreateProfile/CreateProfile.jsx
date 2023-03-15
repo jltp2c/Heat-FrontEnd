@@ -51,97 +51,90 @@ function CreateProfile() {
 
   return (
     <>
-
       <div>
         <h1>New here?</h1>
-        <p>Complete your profile and start your journey right now!</p>
+        <p className="completeProfile">
+          Complete your profile and start your journey right now!
+        </p>
       </div>
       <form className="createFormContainer" onSubmit={handleSubmit}>
-        <div className="cat">
-
-          <option disabled value="-1">
-            Select a category
-          </option>{" "}
+        <div className="category">
+          <option className="optionText" disabled value="-1"></option>
           <select
             value={gender}
             name=""
             id="gender"
             onChange={(event) => setGender(event.target.value)}
           >
-            <option disabled value="disabled">
-              Gender :
+            <option className="gender" disabled value="disabled">
+              gender
             </option>
             <option value="Man">Man</option>
             <option value="Woman">Woman</option>
           </select>
         </div>
 
-        <div className="cat">
-
-          <label htmlFor="age">
-            Age:&nbsp;
-            <input
-              type="number"
-              id="age"
-              min={18}
-              value={age}
-              onChange={(event) => setAge(event.target.value)}
-              placeholder="18"
-            />
-          </label>
+        <div className="category">
+          <input
+            type="number"
+            id="age"
+            min={18}
+            value={age}
+            onChange={(event) => setAge(event.target.value)}
+            placeholder="Enter your age"
+          />
         </div>
 
-
-        <div className="cat">
-
-          <label htmlFor="height">
-            Height:&nbsp;
-            <input
-              type="number"
-              id="currentHeight"
-              value={currentHeight}
-              onChange={(event) => setCurrentHeight(event.target.value)}
-              placeholder="180"
-            />
-            cms
-          </label>
+        <div className="category">
+          <input
+            type="number"
+            id="currentHeight"
+            value={currentHeight}
+            onChange={(event) => setCurrentHeight(event.target.value)}
+            placeholder="Enter your height in cms"
+          />
         </div>
 
-
-        <div className="cat">
-
-          <label htmlFor="weight">
-            Weight:&nbsp;
-            <input
-              type="number"
-              id="currentWeight"
-              value={currentWeight}
-              onChange={(event) => setCurrentWeight(event.target.value)}
-              placeholder="80"
-            />
-            kgs
-          </label>
+        <div className="category">
+          <input
+            type="number"
+            id="currentWeight"
+            value={currentWeight}
+            onChange={(event) => setCurrentWeight(event.target.value)}
+            placeholder="Enter your weight in kg"
+          />
         </div>
 
-
-        <div className="cat">
-
-          <label htmlFor="weightGoal">
-            My weight goal:&nbsp;
-            <input
-              type="number"
-              id="weightGoal"
-              value={weightGoal}
-              onChange={(event) => setWeightGoal(event.target.value)}
-              placeholder="70"
-            />
-            kgs
-          </label>
+        <div className="category">
+          <input
+            type="number"
+            id="weightGoal"
+            value={weightGoal}
+            onChange={(event) => setWeightGoal(event.target.value)}
+            placeholder="Enter your weight goal in kg"
+          />
         </div>
 
-        <button>Create my profile </button>
+        <button className="specialBtn">Create my profile </button>
       </form>
-      <button onClick={handleLogOut}>Logout</button>
+      <div className="btnLogoutContainer">
+        <button className="btnLogout" onClick={handleLogOut}>
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
+            <path d="M18.36 6.64a9 9 0 1 1-12.73 0"></path>
+            <line x1="12" y1="2" x2="12" y2="12"></line>
+          </svg>
+        </button>
+      </div>
     </>
   );
 }

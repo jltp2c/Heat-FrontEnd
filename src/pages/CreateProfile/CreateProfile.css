@@ -1,10 +1,97 @@
 .createFormContainer {
-    background-color: white;
+    background-color: whitesmoke;
     border-radius: 10px;
-    padding: 2rem 8rem 2rem 8rem;
-    height: 44rem;
-    margin: auto;
+    height: 40rem;
+    margin: 2rem auto;
     box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px,
         rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    justify-content: center;
 
+}
+
+.category {
+    width: 15rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+}
+
+.category input {
+    padding: 1rem 2rem;
+    width: 15rem;
+    margin: 1rem auto;
+    color: whitesmoke;
+
+    border: none;
+    border-radius: 8px;
+
+}
+
+
+
+.completeProfile {
+    font-weight: 600;
+    margin: 2rem;
+}
+
+
+
+.specialBtn {
+    margin-top: 2rem;
+
+    background-color: #C3EFB4;
+    border-radius: 12px;
+    padding: .7rem 1.3rem;
+    box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease 0s;
+    cursor: pointer;
+    outline: none;
+    color: black;
+}
+
+
+.specialBtn:hover {
+    background-color: #2EE59D;
+    box-shadow: 0px 15px 20px rgba(46, 229, 157, 0.4);
+    color: #fff;
+    transform: translateY(-7px);
+}
+
+.optionText {
+    font-size: 0.8rem;
+}
+
+.gender {
+
+    font-size: 0.3rem;
+}
+
+select {
+
+    /* all: unset; */
+    background-color: #C3EFB4;
+    width: 8rem;
+    padding: 0.3rem 1rem;
+    border-radius: 12px;
+    border: none;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px,
+        rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+}
+
+
+.btnLogoutContainer {
+    position: relative;
+    background-color: white;
+}
+
+.btnLogout {
+    position: absolute;
+    bottom: 600px;
+    left: 300px;
 }
