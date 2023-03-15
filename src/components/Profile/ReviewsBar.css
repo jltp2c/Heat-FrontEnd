@@ -1,0 +1,12 @@
+.containerInfos {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.containerInfos p {
+    display: flex;
+    border-radius: 100px;
+    width: 120px;
+    margin: 10px;
+}

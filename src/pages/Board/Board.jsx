@@ -46,28 +46,26 @@ const Board = () => {
     setDate(copy);
     console.log(copy.toString());
   };
-
-  return (
-    <div>
-      <div className="containerResultsDate">
-        <button onClick={previousDate}>←</button>
-        <button onClick={() => setDate(() => new Date())}>
-          {date.toDateString()}
-        </button>
-        <button onClick={nextDate}>→</button>
-      </div>
-      <div className="modal">
-        <button onClick={onOpenModal}>My daily foods</button>
-        <Modal open={open} onClose={onCloseModal} center>
-          <p>List foods</p>
-          {foodsConsumed.map((foodConsumed) => {
-            return (
-              <div key={foodConsumed._id} className="OneFoodConsumed">
-                <p>{foodConsumed.name} (100g)</p>
-                <p>Calories : {foodConsumed.calories} kCal</p>
-                <p>Protein(s): {foodConsumed.protein}g </p>
-                <p> Carbohydrate(s) : {foodConsumed.carbohydrates} g</p>
-              </div>
+    
+ return (
+   <div>
+     <div className='containerResultsDate'>
+       <button onClick={previousDate}>←</button>
+       <button onClick={()=>setDate(() => new Date())}>{date.toDateString()}</button> 
+       <button onClick={nextDate}>→</button>
+     </div>
+         <div className='modal'>
+      <button onClick={onOpenModal}>My daily foods</button>
+      <Modal open={open} onClose={onCloseModal} center>
+        <p>List foods</p>
+         {foodsConsumed.map(({food :foodConsumed}) => {
+        return (
+            <div key={foodConsumed._id} className="OneFoodConsumed">
+              <p>{foodConsumed.name} (100g)</p>
+              <p>Calories : {foodConsumed.calories} kCal</p>
+              <p>Protein(s): {foodConsumed.protein}g </p>
+              <p> Carbohydrate(s) : {foodConsumed.carbohydrates} g</p>
+            </div>
             );
           })}
         </Modal>

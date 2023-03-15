@@ -55,7 +55,7 @@ export default function ConsumeFoods({
         <h4> Profile : {userContext?.username}</h4>
         <h4>Daily Calorie : {caloriesTotal()} kCal</h4>
         <h4>
-          Protein(s) : {ProteinTotal()} g / {user.profile.currentWeight} g
+          Protein(s) : {ProteinTotal()} g / {user.profile.currentWeight*0.8} g
         </h4>
         <h4>Carbohydrate(s) : {carboTotal()} g </h4>
       </div>

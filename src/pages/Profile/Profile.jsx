@@ -1,11 +1,16 @@
 import React, { useContext, useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../context/AuthContext";
 import myApi from "../../service/service.js";
 
 function Profile() {
-  const { user, setUser, getToken } = useContext(AuthContext);
+  const { user, setUser, getToken, authenticateUser, removeToken } =
+    useContext(AuthContext);
 
+  function handleLogOut() {
+    removeToken();
+    authenticateUser();
+  }
   const navigate = useNavigate();
 
   const handleDelete = async () => {
@@ -34,17 +39,78 @@ function Profile() {
     user.profile;
   return (
     <div>
-      <h1>Welcome {user?.username}</h1>
-      <p>Gender : {gender}</p>
-      <p>Age : {age}</p>
-      <p>Height : {currentHeight}</p>
-      <p>Current Weight : {currentWeight}</p>
-      <p>Weight Goal : {weightGoal}</p>
-      <p>Current IMC : {calculateImc(currentWeight, currentHeight)}</p>
-      <p>Calories Goal : {weightGoal}</p>
+      <header>
+        <h1 className="profileHeader">Welcome huhuhuhuh{user?.username}</h1>
+      </header>
 
-      <button onClick={handleUpdate}>update profile</button>
-      <button onClick={handleDelete}>delete profile</button>
+      <div className="profilContainer">
+        <div className="profilTopSection">
+          <div className="profilInfo">
+            <p className="profilInfoList">
+              <b>Gender : </b>
+              {gender}
+            </p>
+            <p className="profilInfoList">
+              <b>Age : </b>
+              {age}
+            </p>
+            <p className="profilInfoList">
+              <b>Height : </b>
+              {currentHeight} cm
+            </p>
+            <p className="profilInfoList">
+              <b>Current Weight : </b>
+              {currentWeight} kg
+            </p>
+            <p className="profilInfoList">
+              <b>Weight Goal : </b>
+              {weightGoal} kg
+            </p>
+            <p className="profilInfoList">
+              <b>Current IMC : </b>
+              {calculateImc(currentWeight, currentHeight)}
+            </p>
+            <p className="profilInfoList">
+              <b>Calories Goal : </b>
+              {weightGoal} kCal
+            </p>
+          </div>
+          <div className="profilLogOutBtnContainer">
+            <NavLink to="/">
+              <button onClick={handleLogOut}>
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="24"
+                  height="24"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <path d="M18.36 6.64a9 9 0 1 1-12.73 0"></path>
+                  <line x1="12" y1="2" x2="12" y2="12"></line>
+                </svg>
+              </button>
+            </NavLink>
+          </div>
+        </div>
+        <div className="profilBottomSection">
+          <h2 className="manageProfilTitle">Manage my profil</h2>
+          <p>
+            Missed something ? Update your profile's infos or delete it here !
+          </p>
+          <div className="profilBtns">
+            <button className="profilUpdateBtn" onClick={handleUpdate}>
+              update profile
+            </button>
+            <button className="profilDeleteBtn" onClick={handleDelete}>
+              delete profile
+            </button>
+          </div>
+        </div>
+      </div>
     </div>
   );
 }
