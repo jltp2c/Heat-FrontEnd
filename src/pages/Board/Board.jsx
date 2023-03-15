@@ -61,7 +61,7 @@ const nextDate = () => {
       <button onClick={onOpenModal}>My daily foods</button>
       <Modal open={open} onClose={onCloseModal} center>
         <p>List foods</p>
-         {foodsConsumed.map((foodConsumed) => {
+         {foodsConsumed.map(({food :foodConsumed}) => {
         return (
             <div key={foodConsumed._id} className="OneFoodConsumed">
               <p>{foodConsumed.name} (100g)</p>

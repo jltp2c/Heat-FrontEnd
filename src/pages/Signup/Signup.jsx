@@ -38,7 +38,7 @@ export default function Signup() {
   }
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form className="form" onSubmit={handleSubmit}>
       <div>
         <label htmlFor="username">
           Username:&nbsp;
@@ -69,7 +69,7 @@ export default function Signup() {
       </div>
 
       {error.length > 0 && <p className="error">{error}</p>}
-      <button>Signup</button>
+      <button className="btn">Signup</button>
     </form>
   );
 }

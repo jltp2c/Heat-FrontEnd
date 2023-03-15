@@ -69,7 +69,7 @@ export default function Login() {
       </div>
 
       {error.length > 0 && <p className="error">{error}</p>}
-      <button>Login</button>
+      <button className="btn">Login</button>
     </form>
   );
 }
