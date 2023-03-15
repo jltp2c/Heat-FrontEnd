@@ -49,13 +49,17 @@ const Board = () => {
     
  return (
    <div>
+     <Countdown />
      <div className='containerResultsDate'>
        <button onClick={previousDate}>←</button>
        <button onClick={()=>setDate(() => new Date())}>{date.toDateString()}</button> 
        <button onClick={nextDate}>→</button>
      </div>
+      <div>
+        
+      </div>
          <div className='modal'>
-      <button onClick={onOpenModal}>My daily foods</button>
+      <button className="btn dailyList" onClick={onOpenModal}>My daily foods</button>
       <Modal open={open} onClose={onCloseModal} center>
         <p>List foods</p>
          {foodsConsumed.map(({food :foodConsumed}) => {
@@ -73,9 +77,7 @@ const Board = () => {
       <div className="reviewsBar Container">
         <ReviewsBar foodsConsumed={foodsConsumed} />
       </div>
-      <div>
-        <Countdown />
-      </div>
+     
     </div>
   );
 };

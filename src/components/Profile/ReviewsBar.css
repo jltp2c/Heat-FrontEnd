@@ -2,11 +2,13 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    text-align: center;
+    height: 200px;
 }
 
 .containerInfos p {
     display: flex;
     border-radius: 100px;
-    width: 120px;
+    width: 100px;
     margin: 10px;
 }
