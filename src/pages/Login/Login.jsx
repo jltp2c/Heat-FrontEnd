@@ -3,6 +3,7 @@ import { useState, useContext } from "react";
 import myApi from "./../../service/service";
 import { AuthContext } from "../../context/AuthContext";
 import { useNavigate } from "react-router-dom";
+import TitleApp from "../../components/Profile/TitleApp";
 
 export default function Login() {
   //initialization of states for inputs and error
@@ -44,32 +45,36 @@ export default function Login() {
   }
 
   return (
-    <form onSubmit={handleSubmit}>
-      <div>
-        <label htmlFor="username">
-          Username:&nbsp;
-          <input
-            type="text"
-            id="username"
-            value={username}
-            onChange={(event) => setUsername(event.target.value)}
-          />
-        </label>
-      </div>
-      <div>
-        <label htmlFor="password">
-          Password:&nbsp;
-          <input
-            type="password"
-            id="password"
-            value={password}
-            onChange={(event) => setPassword(event.target.value)}
-          />
-        </label>
-      </div>
+    <>
+      <TitleApp />
 
-      {error.length > 0 && <p className="error">{error}</p>}
-      <button>Login</button>
-    </form>
+      <form onSubmit={handleSubmit}>
+        <div>
+          <label htmlFor="username">
+            Username:&nbsp;
+            <input
+              type="text"
+              id="username"
+              value={username}
+              onChange={(event) => setUsername(event.target.value)}
+            />
+          </label>
+        </div>
+        <div>
+          <label htmlFor="password">
+            Password:&nbsp;
+            <input
+              type="password"
+              id="password"
+              value={password}
+              onChange={(event) => setPassword(event.target.value)}
+            />
+          </label>
+        </div>
+
+        {error.length > 0 && <p className="error">{error}</p>}
+        <button>Login</button>
+      </form>
+    </>
   );
 }
