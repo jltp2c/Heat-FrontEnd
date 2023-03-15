@@ -2,7 +2,7 @@ import React from "react";
 import { CircularProgressbar } from "react-circular-progressbar";
 import "react-circular-progressbar/dist/styles.css";
 import { AuthContext } from "../../context/AuthContext";
-import { useEffect, useState, useContext } from "react";
+import {  useContext } from "react";
 
 function ReviewsBar({ foodsConsumed }) {
   //   const [calories, setCalories] = useState(0);
@@ -22,7 +22,7 @@ function ReviewsBar({ foodsConsumed }) {
   const getCalories = () => {
     let totalCal = 0;
     for (let i = 0; i < foodsConsumed.length; i++) {
-      totalCal += foodsConsumed[i].calories;
+      totalCal += foodsConsumed[i].food.calories;
     }
 
     return totalCal;
@@ -36,14 +36,61 @@ function ReviewsBar({ foodsConsumed }) {
         <p>{getCalories()}</p>
         <p>{caloriesLeft}</p>
       </div>
-      <div>
+      <div className="circularProgressBarCalories">
         <CircularProgressbar
           value={getCalories()}
           maxValue={dailyObj}
           text={dailyObj}
           circleRatio={0.7}
           styles={{
-            text: { fill: "#000000" },
+            trail: {
+              strokeLinecap: "butt",
+              transform: "rotate(-126deg)",
+              transformOrigin: "center center",
+              stroke: "#FEFFC1",
+            },
+            path: {
+              strokeLinecap: "butt",
+              transform: "rotate(-126deg)",
+              transformOrigin: "center center",
+              stroke: "#7FCD95",
+            },
+            text: { fill: "#ddd" },
+          }}
+          strokeWidth={10}
+        />
+      </div>
+       <div className="circularProgressBarCalories">
+        <CircularProgressbar
+          value={getCalories()}
+          maxValue={dailyObj}
+          text={dailyObj}
+          circleRatio={0.7}
+          styles={{
+            trail: {
+              strokeLinecap: "butt",
+              transform: "rotate(-126deg)",
+              transformOrigin: "center center",
+              stroke: "#FEFFC1",
+            },
+            path: {
+              strokeLinecap: "butt",
+              transform: "rotate(-126deg)",
+              transformOrigin: "center center",
+              stroke: "#7FCD95",
+            },
+            text: { fill: "#ddd" },
+          }}
+          strokeWidth={10}
+        />
+      </div>
+       <div className="circularProgressBarCalories">
+        <CircularProgressbar
+          value={getCalories()}
+          maxValue={dailyObj}
+          text={dailyObj}
+          circleRatio={0.7}
+          styles={{
             trail: {
               strokeLinecap: "butt",
               transform: "rotate(-126deg)",

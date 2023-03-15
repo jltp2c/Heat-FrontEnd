@@ -10,8 +10,8 @@ function CreateProfile() {
   const [currentHeight, setCurrentHeight] = useState("");
   const [currentWeight, setCurrentWeight] = useState("");
   const [weightGoal, setWeightGoal] = useState("");
-  const { setUser } = useContext(AuthContext);
   const navigate = useNavigate();
+const {user,setUser , authenticateUser, removeToken } = useContext(AuthContext);
 
   function getToken() {
     return localStorage.getItem("token");
@@ -27,6 +27,8 @@ function CreateProfile() {
       currentWeight,
       weightGoal,
     };
+
+  
     try {
       const response = await myApi.post("/api/board/profile", profileToCreate, {
         headers: { Authorization: `Bearer ${currentToken}` },
@@ -42,14 +44,15 @@ function CreateProfile() {
       console.log(error);
     }
   };
-
-  // if (!age) {
-  //   return <div className="Loading">Loading!</div>;
-  // }
+  function handleLogOut() {
+    removeToken();
+    authenticateUser();
+  }
+ 
   return (
+    <>
     <form onSubmit={handleSubmit}>
       <div>
-        <label htmlFor="category">Gender: </label>
         <option disabled value="-1">
           Select a category
         </option>{" "}
@@ -126,6 +129,8 @@ function CreateProfile() {
 
       <button>Create my profile </button>
     </form>
+    <button onClick={handleLogOut}>Logout</button>
+    </>
   );
 }
 
