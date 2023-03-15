@@ -1,0 +1,13 @@
+.countdownContainer {
+    width: 15rem;
+    height: 2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 1.7rem 5rem;
+    gap: 1rem;
+    background-color: #FEFFC1;
+    border-radius: 10px;
+
+
+}
