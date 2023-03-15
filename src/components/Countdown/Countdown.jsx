@@ -42,13 +42,6 @@ function Countdown() {
     calculateCountdown();
   }, []);
 
-  //Ines
-  //   useEffect(() => {
-  //     remainingTime > 0 &&
-  //       setTimeout(() => setRemainingTime(remainingTime - 1), 1000);
-  //   }, [remainingTime]);
-  //   console.log("rem", remainingTime);
-
   return (
     <div className="countdownContainer">
       <h3>My Goal</h3>

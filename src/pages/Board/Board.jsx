@@ -59,16 +59,16 @@ const Board = () => {
         
       </div>
          <div className='modal'>
-      <button className="btn dailyList" onClick={onOpenModal}>My daily foods</button>
+      <button className="btn" width={"2OO"} onClick={onOpenModal}>My foods</button>
       <Modal open={open} onClose={onCloseModal} center>
-        <p>List foods</p>
+        <p>Food(s): {date.toDateString()}</p>
          {foodsConsumed.map(({food :foodConsumed}) => {
         return (
             <div key={foodConsumed._id} className="OneFoodConsumed">
-              <p>{foodConsumed.name} (100g)</p>
-              <p>Calories : {foodConsumed.calories} kCal</p>
+              <p>Food: {foodConsumed.name} (100g)</p>
+              <p>Calorie(s): {foodConsumed.calories} kCal</p>
               <p>Protein(s): {foodConsumed.protein}g </p>
-              <p> Carbohydrate(s) : {foodConsumed.carbohydrates} g</p>
+              <p> Carbohydrates: {foodConsumed.carbohydrates} g</p>
             </div>
             );
           })}

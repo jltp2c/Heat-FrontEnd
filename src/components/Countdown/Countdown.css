@@ -1,13 +1,22 @@
 .containerTimer {
-    width: 6rem;
+    width: 300px;
     height: 2rem;
     display: flex;
     justify-content: center;
     align-items: center;
+    margin: 10px;
     padding: 1.7rem 5rem;
     gap: 1rem;
     background-color: #FEFFC1;
     border-radius: 10px;
+}
+
+.countdownContainer {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 10px;
 }
 
 .timeGoal {

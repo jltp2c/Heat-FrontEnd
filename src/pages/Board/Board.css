@@ -1,7 +1,12 @@
 .OneFoodConsumed {
-    color: red;
+    color: black;
+    font-size: 0.8rem;
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+    width: 250px;
 }
 
-.dailyList {
-    width: 200px;
+.containerResultsDate {
+    margin: 20px;
 }

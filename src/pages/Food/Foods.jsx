@@ -81,8 +81,15 @@ function Foods() {
 
   return (
     <div className="Container">
-      <ToastContainer />
-      <h2>Add your Meal !</h2>
+      <ToastContainer 
+      />
+      <h2>Add your Meal {userContext?.username} !</h2>
+      
+      <ConsumeFoods
+        foodsConsumed={foodsConsumed}
+        getAllFoodsConsumed={getAllFoodsConsumed}
+        userContext={userContext}
+      />
       <div className="searchBarFood">
         <input
           type="text"
@@ -90,20 +97,15 @@ function Foods() {
           placeholder=" Example : egg"
         />
       </div>
-      <ConsumeFoods
-        foodsConsumed={foodsConsumed}
-        getAllFoodsConsumed={getAllFoodsConsumed}
-        userContext={userContext}
-      />
-      <h3>Food storage ( portion : 100g)</h3>
+      <h3>Pick your food ( portion : 100g)</h3>
       <div className="foodStorage">
         {foods.map((eachFood) => {
           return (
             <div key={eachFood._id} className="cardContainerFood">
               <p>{eachFood.name}</p>
               <p>Calories : {eachFood.calories} kCal</p>
-              <p>carbohydrates : {eachFood.carbohydrates} g</p>
-              <p> proteins : {eachFood.protein} g</p>
+              <p>Carbohydrates : {eachFood.carbohydrates} g</p>
+              <p>Proteins : {eachFood.protein} g</p>
               <button
                 className="addBtn"
                 onClick={() => getOneFood(eachFood._id)}

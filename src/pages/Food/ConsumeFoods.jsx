@@ -50,12 +50,11 @@ export default function ConsumeFoods({
 
   return (
     <div className="containerFoodConsumed">
-      <h3>My daily meal</h3>
       <div className="titles">
-        <h4> Profile : {userContext?.username}</h4>
-        <h4>Daily Calorie : {caloriesTotal()} kCal</h4>
+        
+        <h4>Calories : {caloriesTotal()} kCal</h4>
         <h4>
-          Protein(s) : {ProteinTotal()} g / {user.profile.currentWeight*0.8} g
+          Protein(s) : {ProteinTotal()} g 
         </h4>
         <h4>Carbohydrate(s) : {carboTotal()} g </h4>
       </div>
@@ -71,8 +70,8 @@ export default function ConsumeFoods({
                 className="deleteBtn"
                 onClick={() => handleDelete(_id)}
               >
-                {" "}
-                ❌{" "}
+                <span>🗑️</span>
+                
               </button>
             </div>
         );
