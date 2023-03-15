@@ -43,7 +43,7 @@ button {
   font-size: 1em;
   font-weight: 500;
   font-family: inherit;
-  background-color: #1a1a1a;
+  /* background-color: #1a1a1a; */
   cursor: pointer;
   transition: border-color 0.25s;
 }
@@ -64,6 +64,14 @@ button:focus-visible {
     color: #747bff;
   }
   button {
-    background-color: #f9f9f9;
+    /* background-color: #f9f9f9; */
+    background: none;
   }
+}
+
+* {
+  /* box-sizing: border-box;
+  padding: 0;
+  margin: 0; */
+  /* outline: 1px solid red; */
 }
