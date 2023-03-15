@@ -39,7 +39,7 @@ export default function Signup() {
   }
 
   return (
-    <>
+  <>
       <TitleApp />
       <form onSubmit={handleSubmit}>
         <div>
@@ -77,8 +77,9 @@ export default function Signup() {
         </div>
 
         {error.length > 0 && <p className="error">{error}</p>}
-        <button>Signup</button>
+        <button className="btn">Signup</button>
       </form>
     </>
+
   );
 }

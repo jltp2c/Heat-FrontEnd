@@ -5,8 +5,8 @@ import { AuthContext } from "../../context/AuthContext";
 import {  useContext } from "react";
 
 function ReviewsBar({ foodsConsumed }) {
-  //   const [calories, setCalories] = useState(0);
-  const { user: userContext, authenticateUser } = useContext(AuthContext);
+ 
+  const { user: userContext } = useContext(AuthContext);
 
   const userGender = userContext.profile.gender;
   let dailyObj = 0;
@@ -17,7 +17,27 @@ function ReviewsBar({ foodsConsumed }) {
     dailyObj = 1950;
   }
 
+ 
+  let EachGlucideHaveFourKcal = 4
+  let PourcentOfcarbohydratePerDay = 0.45
+
   console.log("dailyObj=", dailyObj);
+
+  const ProteinTotal = () => {
+    let total = 0;
+    for (let i = 0; i < foodsConsumed.length; i++) {
+      total += foodsConsumed[i].food.protein;
+    }
+    return total.toFixed(2);
+  };
+
+    const carboTotal = () => {
+    let total = 0;
+    for (let i = 0; i < foodsConsumed.length; i++) {
+      total += foodsConsumed[i].food.carbohydrates;
+    }
+    return total.toFixed(0);
+  };
 
   const getCalories = () => {
     let totalCal = 0;
@@ -29,88 +49,103 @@ function ReviewsBar({ foodsConsumed }) {
   };
 
   let caloriesLeft = dailyObj - getCalories();
+  let proteinsTotalDay = userContext.profile.currentWeight*0.8;
+  let proteinsLeft = proteinsTotalDay - ProteinTotal();
 
+ 
+ 
   return (
     <>
+      <h2>Calories</h2>
+      <div className="containerInfos">
+        <p>Daily calories : {getCalories()} kCal</p>
+        <div className="circularProgressBarCalories">
+          <CircularProgressbar
+            value={getCalories()}
+            maxValue={dailyObj}
+            text={`${dailyObj}Kcal`}
+            circleRatio={0.7}
+            styles={{
+              trail: {
+                strokeLinecap: "butt",
+                transform: "rotate(-126deg)",
+                transformOrigin: "center center",
+                stroke: "#FEFFC1",
+              },
+              path: {
+                strokeLinecap: "butt",
+                transform: "rotate(-126deg)",
+                transformOrigin: "center center",
+                stroke: "#7FCD95",
+              },
+              text: { fill: "#ddd" },
+            }}
+            strokeWidth={10}
+            />
+        </div>
+        <p>Calories left : {caloriesLeft} kCal</p>
+      </div>
+          <h2>Proteins</h2>
+      <div className="containerInfos">
+      
+      <p>Daily Proteins : {ProteinTotal()} g</p>
+       <div className="circularProgressBarProteins">
+        <CircularProgressbar
+          value={ProteinTotal()}
+          maxValue={proteinsTotalDay}
+          text={`${proteinsTotalDay}g` }
+          circleRatio={0.7}
+          styles={{
+            trail: {
+              strokeLinecap: "butt",
+              transform: "rotate(-126deg)",
+              transformOrigin: "center center",
+              stroke: "#FEFFC1",
+            },
+            path: {
+              strokeLinecap: "butt",
+              transform: "rotate(-126deg)",
+              transformOrigin: "center center",
+              stroke: "#e74c3c",
+            },
+            text: { fill: "#ddd" },
+          }}
+          strokeWidth={10}
+        />
+      </div>
+      <p>Proteins left : {proteinsLeft.toFixed(0)} g</p>
+      </div>
+      <h2>Carbohydrates</h2>
+       <div className="containerInfos">
+        <p>Daily Carbohydrates : {carboTotal()} g</p>
+       <div className="circularProgressBarCarbohydrates">
+        <CircularProgressbar
+          value={carboTotal()}
+          maxValue={(dailyObj*PourcentOfcarbohydratePerDay)/EachGlucideHaveFourKcal}
+          text={`${((dailyObj*PourcentOfcarbohydratePerDay)/EachGlucideHaveFourKcal).toFixed(0)}g`}
+          circleRatio={0.7}
+          styles={{
+            trail: {
+              strokeLinecap: "butt",
+              transform: "rotate(-126deg)",
+              transformOrigin: "center center",
+              stroke: "#FEFFC1",
+            },
+            path: {
+              strokeLinecap: "butt",
+              transform: "rotate(-126deg)",
+              transformOrigin: "center center",
+              stroke: "#2980b9",
+            },
+            text: { fill: "#ddd" },
+          }}
+          strokeWidth={10}
+        />
+      </div>
+      <p>Carbohydrates left : {((dailyObj*PourcentOfcarbohydratePerDay)/EachGlucideHaveFourKcal-carboTotal()).toFixed(0)} g</p>
+      </div>
       <div>
-        <p>{getCalories()}</p>
-        <p>{caloriesLeft}</p>
-      </div>
-      <div className="circularProgressBarCalories">
-        <CircularProgressbar
-          value={getCalories()}
-          maxValue={dailyObj}
-          text={dailyObj}
-          circleRatio={0.7}
-          styles={{
-            trail: {
-              strokeLinecap: "butt",
-              transform: "rotate(-126deg)",
-              transformOrigin: "center center",
-              stroke: "#FEFFC1",
-            },
-            path: {
-              strokeLinecap: "butt",
-              transform: "rotate(-126deg)",
-              transformOrigin: "center center",
-              stroke: "#7FCD95",
-            },
-            text: { fill: "#ddd" },
-          }}
-          strokeWidth={10}
-        />
-      </div>
-       <div className="circularProgressBarCalories">
-        <CircularProgressbar
-          value={getCalories()}
-          maxValue={dailyObj}
-          text={dailyObj}
-          circleRatio={0.7}
-          styles={{
-            trail: {
-              strokeLinecap: "butt",
-              transform: "rotate(-126deg)",
-              transformOrigin: "center center",
-              stroke: "#FEFFC1",
-            },
-            path: {
-              strokeLinecap: "butt",
-              transform: "rotate(-126deg)",
-              transformOrigin: "center center",
-              stroke: "#7FCD95",
-            },
-            text: { fill: "#ddd" },
-          }}
-          strokeWidth={10}
-        />
-      </div>
-       <div className="circularProgressBarCalories">
-        <CircularProgressbar
-          value={getCalories()}
-          maxValue={dailyObj}
-          text={dailyObj}
-          circleRatio={0.7}
-          styles={{
-            trail: {
-              strokeLinecap: "butt",
-              transform: "rotate(-126deg)",
-              transformOrigin: "center center",
-              stroke: "#FEFFC1",
-            },
-            path: {
-              strokeLinecap: "butt",
-              transform: "rotate(-126deg)",
-              transformOrigin: "center center",
-              stroke: "#7FCD95",
-            },
-            text: { fill: "#ddd" },
-          }}
-          strokeWidth={10}
-        />
-      </div>
-      <div>
-        <p></p>
-        <p></p>
+
       </div>
     </>
   );

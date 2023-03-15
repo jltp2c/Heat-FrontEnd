@@ -48,6 +48,7 @@ export default function Login() {
     <>
       <TitleApp />
 
+
       <form onSubmit={handleSubmit}>
         <div>
           <label htmlFor="username">
@@ -72,9 +73,10 @@ export default function Login() {
           </label>
         </div>
 
-        {error.length > 0 && <p className="error">{error}</p>}
-        <button>Login</button>
-      </form>
+         {error.length > 0 && <p className="error">{error}</p>}
+      <button className="btn">Login</button>
+    </form>
     </>
+
   );
 }
