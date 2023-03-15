@@ -84,6 +84,7 @@ function CreateProfile() {
           </label>
         </div>
 
+<<<<<<< Updated upstream
         <div>
           <label htmlFor="height">
             Height:&nbsp;
@@ -97,6 +98,20 @@ function CreateProfile() {
             cms
           </label>
         </div>
+=======
+      <div>
+        <label htmlFor="height">
+          Height:&nbsp;
+          <input
+            type="number"
+            id="currentHeight"
+            value={currentHeight}
+            onChange={(event) => setCurrentHeight(event.target.value)}
+          />
+          m
+        </label>
+      </div>
+>>>>>>> Stashed changes
 
         <div>
           <label htmlFor="weight">
