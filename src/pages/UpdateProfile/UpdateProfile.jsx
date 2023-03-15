@@ -4,7 +4,6 @@ import myApi from "../../service/service.js";
 import { useNavigate } from "react-router-dom";
 
 const UpdateProfile = () => {
-  const [user, setUser] = useState("");
   const [gender, setGender] = useState("");
   const [age, setAge] = useState(0);
   const [currentWeight, setCurrentWeight] = useState(0);
@@ -12,7 +11,7 @@ const UpdateProfile = () => {
   const [idProfile, setIdProfile] = useState("");
   const navigate = useNavigate()
 
-  const { user: userContext, getToken } = useContext(AuthContext);
+  const { setUser, getToken } = useContext(AuthContext);
 
   const getProfileToUpdate = async () => {
     try {
@@ -54,7 +53,11 @@ const UpdateProfile = () => {
       );
       
       if (profilUpdated.status === 202) {
-        console.log(profileToUpdate)
+        console.log(profilUpdated)
+        setUser(user=>{
+          console.log(user)
+         return {...user, profile: profilUpdated.data}
+        })
         navigate("/board/profile")
       }
 

@@ -26,7 +26,7 @@ export default function ConsumeFoods({
     let total = 0;
     for (let i = 0; i < foodsConsumed.length; i++) {
       //we compare the id of the food and the current user if not return 0 for the total of calories
-      total += foodsConsumed[i].calories;
+      total += foodsConsumed[i].food.calories;
     }
     return total;
   };
@@ -34,7 +34,7 @@ export default function ConsumeFoods({
   const ProteinTotal = () => {
     let total = 0;
     for (let i = 0; i < foodsConsumed.length; i++) {
-      total += foodsConsumed[i].protein;
+      total += foodsConsumed[i].food.protein;
     }
     return total.toFixed(2);
   };
@@ -42,7 +42,7 @@ export default function ConsumeFoods({
   const carboTotal = () => {
     let total = 0;
     for (let i = 0; i < foodsConsumed.length; i++) {
-      total += foodsConsumed[i].carbohydrates;
+      total += foodsConsumed[i].food.carbohydrates;
     }
     return total.toFixed(2);
   };
@@ -50,7 +50,7 @@ export default function ConsumeFoods({
 
   return (
     <div className="containerFoodConsumed">
-      <h3>My Meal</h3>
+      <h3>My daily meal</h3>
       <div className="titles">
         <h4> Profile : {userContext?.username}</h4>
         <h4>Daily Calorie : {caloriesTotal()} kCal</h4>
@@ -60,7 +60,7 @@ export default function ConsumeFoods({
         <h4>Carbohydrate(s) : {carboTotal()} g </h4>
       </div>
 
-      {foodsConsumed.map((foodConsumed) => {
+      {foodsConsumed.map(({food : foodConsumed , _id}) => {
         return (
             <div key={foodConsumed._id} className="OneFoodConsumed">
               <p>{foodConsumed.name} (100g)</p>
@@ -69,7 +69,7 @@ export default function ConsumeFoods({
               <p> Carbohydrate(s) : {foodConsumed.carbohydrates} g</p>
               <button
                 className="deleteBtn"
-                onClick={() => handleDelete(foodConsumed._id)}
+                onClick={() => handleDelete(_id)}
               >
                 {" "}
                 ❌{" "}

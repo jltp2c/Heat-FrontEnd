@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from "react";
-import { Navigate, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../../context/AuthContext";
 import myApi from "../../service/service.js";
 
@@ -41,7 +41,7 @@ function Profile() {
       <p>Current Weight : {currentWeight}</p>
       <p>Weight Goal : {weightGoal}</p>
       <p>Current IMC : {calculateImc(currentWeight, currentHeight)}</p>
-      <p>Calories Goal : {weightGoal / 3}</p>
+      <p>Calories Goal : {weightGoal}</p>
 
       <button onClick={handleUpdate}>update profile</button>
       <button onClick={handleDelete}>delete profile</button>

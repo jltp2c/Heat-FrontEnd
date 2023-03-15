@@ -6,6 +6,7 @@ import myApi from "../../service/service.js"
 import ReviewsBar from "../../components/Profile/ReviewsBar";
 
 
+
 const Board = () => {
 
 const [date,setDate]=useState(() => new Date())
@@ -48,9 +49,6 @@ const nextDate = () => {
   setDate(copy)
   console.log(copy.toString())
 }
-
-
-
     
  return (
    <div>
@@ -58,12 +56,8 @@ const nextDate = () => {
        <button onClick={previousDate}>←</button>
        <button onClick={()=>setDate(() => new Date())}>{date.toDateString()}</button> 
        <button onClick={nextDate}>→</button>
-      
      </div>
-      <div>
-        <ReviewsBar foodsConsumed={foodsConsumed}></ReviewsBar>
-      </div>
-      <div className='modal'>
+         <div className='modal'>
       <button onClick={onOpenModal}>My daily foods</button>
       <Modal open={open} onClose={onCloseModal} center>
         <p>List foods</p>
@@ -79,6 +73,10 @@ const nextDate = () => {
           })}
       </Modal>
     </div>
+      <div className='reviewsBar Container'>
+        <ReviewsBar foodsConsumed={foodsConsumed}></ReviewsBar>
+      </div>
+  
    </div>
  )
 
