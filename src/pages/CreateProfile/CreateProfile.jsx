@@ -65,8 +65,8 @@ const {user,setUser , authenticateUser, removeToken } = useContext(AuthContext);
           <option disabled value="disabled">
             Gender :
           </option>
-          <option value="Man">Man</option>
-          <option value="Woman">Woman</option>
+          <option value="man">Man</option>
+          <option value="woman">Woman</option>
         </select>
      
       </div>
