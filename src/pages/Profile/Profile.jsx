@@ -40,7 +40,9 @@ function Profile() {
   return (
     <div>
       <header>
-        <h1 className="profileHeader">Welcome huhuhuhuh{user?.username}</h1>
+        <h1 className="profileHeader">
+          Welcome <p className="colorUsername">{user?.username} !</p>{" "}
+        </h1>
       </header>
 
       <div className="profilContainer">
@@ -102,10 +104,10 @@ function Profile() {
             Missed something ? Update your profile's infos or delete it here !
           </p>
           <div className="profilBtns">
-            <button className="profilUpdateBtn" onClick={handleUpdate}>
+            <button className="btn" onClick={handleUpdate}>
               update profile
             </button>
-            <button className="profilDeleteBtn" onClick={handleDelete}>
+            <button className="profilDeleteBtn btn" onClick={handleDelete}>
               delete profile
             </button>
           </div>
