@@ -13,6 +13,7 @@ function CreateProfile() {
   const navigate = useNavigate();
   const { user, setUser, authenticateUser, removeToken } =
     useContext(AuthContext);
+  const [error, setError] = useState("");
 
   function getToken() {
     return localStorage.getItem("token");
@@ -42,7 +43,8 @@ function CreateProfile() {
       }
       console.log(response);
     } catch (error) {
-      console.log(error);
+      // console.error(error.response.data);
+      setError(error?.response?.data?.message ?? "something went wrong");
     }
   };
   function handleLogOut() {
@@ -115,7 +117,7 @@ function CreateProfile() {
             placeholder="Enter your weight goal in kg"
           />
         </div>
-
+        {error.length > 0 && <p className="error">{error}</p>}
         <button className="specialBtn">Create my profile </button>
       </form>
       <div className="btnLogoutContainer">
