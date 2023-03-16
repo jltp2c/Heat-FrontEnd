@@ -98,10 +98,10 @@ function Foods() {
         .map((eachFood) => {
           return (
             <div key={eachFood._id} className="cardContainerFood">
-              <p>{eachFood.name}</p>
-              <p>Calories : {eachFood.calories} kCal</p>
-              <p>Carbohydrates : {eachFood.carbohydrates} g</p>
-              <p>Proteins : {eachFood.protein} g</p>
+              <p className="alignLeft">{eachFood.name} (100g)</p>
+              <p>{eachFood.calories} kCal</p>
+              <p>Pro: {eachFood.protein}g</p>
+              <p>Carb: {eachFood.carbohydrates}g</p>
               <button
                 className="addBtn"
                 onClick={() => getOneFood(eachFood._id)}

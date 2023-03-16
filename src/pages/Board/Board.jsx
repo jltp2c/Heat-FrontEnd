@@ -65,7 +65,7 @@ const Board = () => {
          {foodsConsumed.map(({food :foodConsumed}) => {
         return (
             <div key={foodConsumed._id} className="OneFoodConsumed">
-              <p>Food: {foodConsumed.name} (100g)</p>
+              <p>{foodConsumed.name} (100g) &nbsp; </p>
               <span>{foodConsumed.calories} kCal</span>
             </div>
             );
