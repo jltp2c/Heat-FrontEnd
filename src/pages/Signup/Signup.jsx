@@ -41,7 +41,7 @@ export default function Signup() {
   return (
     <>
       <TitleApp />
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit} className="formLogin">
         <div>
           <label htmlFor="username">
             Username:&nbsp;
