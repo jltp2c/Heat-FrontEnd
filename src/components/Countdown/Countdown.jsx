@@ -38,9 +38,10 @@ function Countdown() {
 
   return (
     <div className="countdownContainer">
-      <h1>My Goal</h1>
+      <h3>My Goal</h3>
       <div className="containerTimer">
         <div className="timeGoal">
+
 
         <span>{remainingTime.days}</span>
         <span>DAYS</span>
