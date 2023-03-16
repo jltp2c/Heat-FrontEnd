@@ -2,11 +2,9 @@ import React, { useContext } from "react";
 import { useState, useEffect } from "react";
 import { AuthContext } from "../../context/AuthContext";
 
-
-
 function Countdown() {
-  const [now] = useState(() => new Date());
-  const [remainingTime, setRemainingTime] = useState(60);
+  // const [now] = useState(() => new Date());
+  const [remainingTime, setRemainingTime] = useState(0);
   const { user: userContext } = useContext(AuthContext);
 
   const kgToLoose =
@@ -14,18 +12,13 @@ function Countdown() {
 
   let days = kgToLoose * 2 * 7;
   days = days.toFixed();
-  //console.log(days);
 
   function calculateCountdown() {
-    const endDate = new Date();
-    endDate.setHours(now.getHours());
-    endDate.setMinutes(now.getMinutes());
-    endDate.setSeconds(now.getSeconds());
-    endDate.setDate(endDate.getDate() + Number(days));
-    //console.log(now, endDate);
+    const now = new Date();
+    const storedStartDate = new Date(userContext.profile.createdAt);
+    const endDate = new Date(storedStartDate.getTime() + days * 86400000);
 
-    const startDate = new Date();
-    const difference = endDate.getTime() - startDate.getTime();
+    const difference = endDate.getTime() - now.getTime();
 
     if (difference > 0) {
       setRemainingTime({
@@ -40,6 +33,7 @@ function Countdown() {
 
   useEffect(() => {
     calculateCountdown();
+    console.log("rem", remainingTime);
   }, []);
 
   return (
@@ -47,6 +41,7 @@ function Countdown() {
       <h1>My Goal</h1>
       <div className="containerTimer">
         <div className="timeGoal">
+
         <span>{remainingTime.days}</span>
         <span>DAYS</span>
       </div>
@@ -65,6 +60,7 @@ function Countdown() {
       <span>{remainingTime.seconds}</span>
       <span>SEC</span>
       </div>
+
       </div>
     </div>
   );
