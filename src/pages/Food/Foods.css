@@ -1,6 +1,6 @@
 .foodStorage {
     display: flex;
-    flex-wrap: wrap;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     gap: 10px;
@@ -12,10 +12,17 @@
     box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px,
         rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
     background-color: whitesmoke;
+    font-size: 0.8rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px;
+    margin: 4px;
+    box-shadow: rgba(0, 0, 0, 0.15) 2.4px 2.4px 3.2px;
+    text-align: center;
     padding: 5px;
-    height: 140px;
-    width: 135px;
-    font-size: 0.7rem;
+    width: 300px;
+
 }
 
 
@@ -45,7 +52,7 @@
     flex-wrap: wrap;
     justify-content: space-around;
     background-color: whitesmoke;
-    border-radius: 5%;
+    border-radius: 20px;
     box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px,
         rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
     margin: 20px;
@@ -56,6 +63,14 @@
     color: green;
     font-weight: bold;
     font-size: 1.5rem;
+    width: 3.5rem;
+    border: none;
+}
+
+.addBtn:active,
+.addBtn:focus {
+    outline: 0;
+    border: none;
 }
 
 .Container h2 {
@@ -70,4 +85,9 @@
 
 h3 {
     margin: 20px;
+}
+
+.alignLeft {
+    text-align: left;
+    padding-left: 15px;
 }

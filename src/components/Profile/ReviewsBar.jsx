@@ -23,7 +23,7 @@ function ReviewsBar({ foodsConsumed }) {
     for (let i = 0; i < foodsConsumed.length; i++) {
       total += foodsConsumed[i].food.protein;
     }
-    return total.toFixed(2);
+    return total.toFixed(1);
   };
 
   const carboTotal = () => {
@@ -31,7 +31,7 @@ function ReviewsBar({ foodsConsumed }) {
     for (let i = 0; i < foodsConsumed.length; i++) {
       total += foodsConsumed[i].food.carbohydrates;
     }
-    return total.toFixed(0);
+    return total.toFixed(1);
   };
 
   const getCalories = () => {
@@ -48,7 +48,7 @@ function ReviewsBar({ foodsConsumed }) {
   let proteinsLeft = proteinsTotalDay - ProteinTotal();
 
   return (
-    <>
+    <div className="allCirclesReview">
       <h2>Calories</h2>
       <div className="containerInfos">
         <p>Max {dailyObj} kCal</p>
@@ -80,81 +80,68 @@ function ReviewsBar({ foodsConsumed }) {
       </div>
       <h2>Proteins</h2>
       <div className="containerInfos">
-        <p>Max {`${proteinsTotalDay}g`}</p>
-        <div className="circularProgressBarProteins">
-          <CircularProgressbar
-            value={ProteinTotal()}
-            maxValue={proteinsTotalDay}
-            text={`${ProteinTotal()}g`}
-            circleRatio={0.7}
-            styles={{
-              trail: {
-                strokeLinecap: "butt",
-                transform: "rotate(-126deg)",
-                transformOrigin: "center center",
-                stroke: "#FEFFC1",
-              },
-              path: {
-                strokeLinecap: "butt",
-                transform: "rotate(-126deg)",
-                transformOrigin: "center center",
-                stroke: "#e74c3c",
-              },
-              text: { fill: "black", fontSize: "13px" },
-            }}
-            strokeWidth={10}
-          />
-        </div>
-        <p>Left {proteinsLeft.toFixed(0)}g</p>
+      
+        <p>Max {`${proteinsTotalDay.toFixed(1)}g`}</p>
+       <div className="circularProgressBarProteins">
+        <CircularProgressbar
+          value={ProteinTotal()}
+          maxValue={proteinsTotalDay}
+          text={ `${ProteinTotal()}g`}
+          circleRatio={0.7}
+          styles={{
+            trail: {
+              strokeLinecap: "butt",
+              transform: "rotate(-126deg)",
+              transformOrigin: "center center",
+              stroke: "#FEFFC1",
+            },
+            path: {
+              strokeLinecap: "butt",
+              transform: "rotate(-126deg)",
+              transformOrigin: "center center",
+              stroke: "#e74c3c",
+            },
+            text: { fill: "black" , fontSize: '13px'},
+          }}
+          strokeWidth={10}
+        />
+      </div>
+      <p>Left {proteinsLeft.toFixed(1)}g</p>
       </div>
       <h2>Carbohydrates</h2>
-      <div className="containerInfos">
-        <p>
-          Max{" "}
-          {`${(
-            (dailyObj * PourcentOfcarbohydratePerDay) /
-            EachGlucideHaveFourKcal
-          ).toFixed(0)}g`}
-        </p>
-        <div className="circularProgressBarCarbohydrates">
-          <CircularProgressbar
-            value={carboTotal()}
-            maxValue={
-              (dailyObj * PourcentOfcarbohydratePerDay) /
-              EachGlucideHaveFourKcal
-            }
-            text={`${carboTotal()}g`}
-            circleRatio={0.7}
-            styles={{
-              trail: {
-                strokeLinecap: "butt",
-                transform: "rotate(-126deg)",
-                transformOrigin: "center center",
-                stroke: "#FEFFC1",
-              },
-              path: {
-                strokeLinecap: "butt",
-                transform: "rotate(-126deg)",
-                transformOrigin: "center center",
-                stroke: "#2980b9",
-              },
-              text: { fill: "#535252", fontSize: "13px" },
-            }}
-            strokeWidth={10}
-          />
-        </div>
-        <p>
-          Left :{" "}
-          {(
-            (dailyObj * PourcentOfcarbohydratePerDay) /
-              EachGlucideHaveFourKcal -
-            carboTotal()
-          ).toFixed(0)}{" "}
-          g
-        </p>
+       <div className="containerInfos">
+        <p>Max {`${((dailyObj*PourcentOfcarbohydratePerDay)/EachGlucideHaveFourKcal).toFixed(1)}g`}</p>
+       <div className="circularProgressBarCarbohydrates">
+        <CircularProgressbar
+          value={carboTotal()}
+          maxValue={((dailyObj*PourcentOfcarbohydratePerDay)/EachGlucideHaveFourKcal).toFixed(1)}
+          text={`${carboTotal()}g`}
+          circleRatio={0.7}
+          styles={{
+            trail: {
+              strokeLinecap: "butt",
+              transform: "rotate(-126deg)",
+              transformOrigin: "center center",
+              stroke: "#FEFFC1",
+            },
+            path: {
+              strokeLinecap: "butt",
+              transform: "rotate(-126deg)",
+              transformOrigin: "center center",
+              stroke: "#2980b9",
+            },
+            text: { fill: "#535252" , fontSize: '13px'},
+          }}
+          strokeWidth={10}
+        />
       </div>
-      <div></div>
-    </>
+      <p>Left : {((dailyObj*PourcentOfcarbohydratePerDay)/EachGlucideHaveFourKcal-carboTotal()).toFixed(1)} g</p>
+      </div>
+      <div>
+
+      </div>
+    </div>
+
   );
 }
 

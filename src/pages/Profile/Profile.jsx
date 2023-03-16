@@ -49,7 +49,7 @@ function Profile() {
   const { gender, age, currentHeight, currentWeight, weightGoal } =
     user.profile;
   return (
-    <div>
+    <div className="allProfileContainer">
       <header>
         <h1 className="profileHeader">
           Welcome <p className="colorUsername">{user?.username} !</p>{" "}

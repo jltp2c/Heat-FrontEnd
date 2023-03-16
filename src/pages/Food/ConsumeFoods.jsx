@@ -63,9 +63,9 @@ export default function ConsumeFoods({
         return (
             <div key={_id} className="OneFoodConsumed">
               <p>{foodConsumed.name} (100g)</p>
-              <p>Cal : {foodConsumed.calories} kCal</p>
-              <p>Pro : {foodConsumed.protein} g </p>
-              <p> Carb : {foodConsumed.carbohydrates} g</p>
+              <p>{foodConsumed.calories} kCal</p>
+              <p>Pro: {foodConsumed.protein}g </p>
+              <p> Carb: {foodConsumed.carbohydrates}g</p>
               <button
                 className="deleteBtn"
                 onClick={() => handleDelete(_id)}
