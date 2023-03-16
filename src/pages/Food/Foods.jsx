@@ -4,12 +4,13 @@ import { AuthContext } from "../../context/AuthContext";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import myApi from "../../service/service";
+import addPic from "../../assets/img/icons/plus-circle.svg"
 
 function Foods() {
   // const [date, setDate] = useState(new Date())
   const [foods, setFoods] = useState([]);
   const [foodsConsumed, setfoodsConsumed] = useState([]);
-  const [searchValue, setSearchValue] = useState("");
+  const [searchValue, setSearchValue] = useState('');
   const { user: userContext } = useContext(AuthContext);
   const notify = () => toast("You add one food !");
 
@@ -36,6 +37,7 @@ function Foods() {
           headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
         }
       );
+    
       getAllFoodsConsumed();
       console.log(response);
       notify();
@@ -57,24 +59,12 @@ function Foods() {
     }
   };
 
-  const searchBar = (foodToFind) => {
-    const searchedFoods = foods.filter((food) => {
-      return food.name.toLowerCase().includes(foodToFind.toLowerCase());
-    });
-    setSearchValue(foods);
-    setFoods(searchedFoods);
-    console.log(searchedFoods);
-  };
-
   const handleSearch = (e) => {
-    if (e.target.value !== "") {
-      searchBar(e.target.value);
-    } else {
-      getAllFoods();
-    }
+    let value = e.target.value;
+    setSearchValue(value)
   };
 
-  useEffect(() => {
+  useEffect((e) => {
     getAllFoods();
     getAllFoodsConsumed();
   }, []);
@@ -88,18 +78,24 @@ function Foods() {
       <ConsumeFoods
         foodsConsumed={foodsConsumed}
         getAllFoodsConsumed={getAllFoodsConsumed}
-        userContext={userContext}
+        setfoodsConsumed={setfoodsConsumed}
       />
-      <div className="searchBarFood">
+     
+      <h3>Pick your food (per 100g)</h3>
+       <div className="searchBarFood">
         <input
           type="text"
-          onChange={handleSearch}
+          onChange={(handleSearch)}
           placeholder=" Example : egg"
         />
       </div>
-      <h3>Pick your food ( portion : 100g)</h3>
       <div className="foodStorage">
-        {foods.map((eachFood) => {
+      
+          {foods
+        .filter((food) => {
+          return food.name.toLowerCase().includes(searchValue.toLowerCase());
+         })
+        .map((eachFood) => {
           return (
             <div key={eachFood._id} className="cardContainerFood">
               <p>{eachFood.name}</p>
@@ -110,11 +106,12 @@ function Foods() {
                 className="addBtn"
                 onClick={() => getOneFood(eachFood._id)}
               >
-                +
+                <img src={addPic} alt="addingBtn"></img>
               </button>
             </div>
           );
         })}
+        )
       </div>
     </div>
   );

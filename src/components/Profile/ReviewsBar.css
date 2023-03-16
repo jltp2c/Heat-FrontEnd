@@ -8,7 +8,8 @@
 
 .containerInfos p {
     display: flex;
-    border-radius: 100px;
     width: 100px;
     margin: 10px;
+    padding: 10px;
+    font-size: 0.8rem;
 }

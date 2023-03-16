@@ -44,20 +44,23 @@ function Countdown() {
 
   return (
     <div className="countdownContainer">
-      <h3>My Goal</h3>
+      <h1>My Goal</h1>
       <div className="containerTimer">
         <div className="timeGoal">
         <span>{remainingTime.days}</span>
         <span>DAYS</span>
       </div>
+      <span>:</span>
       <div className="timeGoal">
         <span>{remainingTime.hours}</span>
-      <span>HOURS</span>
+      <span>H</span>
       </div>
+      <span>:</span>
       <div className="timeGoal">
       <span>{remainingTime.minutes}</span>
       <span>MIN</span>
       </div>
+      <span>:</span>
       <div className="timeGoal">
       <span>{remainingTime.seconds}</span>
       <span>SEC</span>
