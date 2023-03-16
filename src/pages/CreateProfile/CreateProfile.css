@@ -1,7 +1,7 @@
 .createFormContainer {
     background-color: whitesmoke;
     border-radius: 10px;
-    height: 40rem;
+    height: 30rem;
     margin: 2rem auto;
     box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px,
         rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
@@ -85,12 +85,6 @@ select {
         rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
 }
 
-
-.btnLogoutContainer {
-    position: relative;
-
-}
-
 .btnLogout {
     position: absolute;
     bottom: 600px;
@@ -102,4 +96,5 @@ select {
     padding: 0;
     box-shadow: rgba(44, 44, 82, 0.25) 0px 2px 5px -1px,
         rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+    transform: translate(-4rem, 10rem);
 }

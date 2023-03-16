@@ -66,7 +66,7 @@ const UpdateProfile = () => {
   };
 
   return (
-    <div>
+    <div className="allUpdateProfile">
       <div>
         <h1 className="udpateTitle">
           Welcome back
@@ -97,8 +97,10 @@ const UpdateProfile = () => {
         <div className="category">
           <input
             type="number"
+            name="age"
             id="age"
             min={18}
+            max={120}
             value={age}
             onChange={(event) => setAge(event.target.value)}
             placeholder="Enter your age"
@@ -110,8 +112,10 @@ const UpdateProfile = () => {
             type="number"
             id="currentWeight"
             value={currentWeight}
+            min= {20}
+            max={300}
             onChange={(event) => setCurrentWeight(event.target.value)}
-            placeholder="Enter your weight in kg"
+            placeholder="Enter your weight (kg)"
           />
         </div>
 
@@ -120,8 +124,10 @@ const UpdateProfile = () => {
             type="number"
             id="weightGoal"
             value={weightGoal}
+            min= {20}
+            max={300}
             onChange={(event) => setWeightGoal(event.target.value)}
-            placeholder="Enter your weight goal in kg"
+            placeholder="Enter your weight goal (kg)"
           />
         </div>
 

@@ -12,7 +12,7 @@ function Foods() {
   const [foodsConsumed, setfoodsConsumed] = useState([]);
   const [searchValue, setSearchValue] = useState('');
   const { user: userContext } = useContext(AuthContext);
-  const notify = () => toast("You add one food !");
+  const notify = () => toast("Food added !");
 
   // all storage food
   const getAllFoods = async () => {
@@ -111,7 +111,6 @@ function Foods() {
             </div>
           );
         })}
-        )
       </div>
     </div>
   );

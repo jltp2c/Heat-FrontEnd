@@ -116,10 +116,10 @@ function Profile() {
           </p>
           <div className="profilBtns">
             <button className="btn" onClick={handleUpdate}>
-              update
+              Update
             </button>
             <button className="profilDeleteBtn btn" onClick={handleDelete}>
-              delete
+              Delete
             </button>
           </div>
         </div>
