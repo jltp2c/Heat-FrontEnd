@@ -51,13 +51,15 @@ function ReviewsBar({ foodsConsumed }) {
   let caloriesLeft = dailyObj - getCalories();
   let proteinsTotalDay = userContext.profile.currentWeight*0.8;
   let proteinsLeft = proteinsTotalDay - ProteinTotal();
+
+ 
  
   return (
     <>
       <h2>Calories</h2>
       <div className="containerInfos">
       
-        <p>Daily : {dailyObj} kCal</p>
+        <p>Max {dailyObj} kCal</p>
        <div className="circularProgressBarProteins">
         <CircularProgressbar
           value={getCalories()}
@@ -77,22 +79,22 @@ function ReviewsBar({ foodsConsumed }) {
               transformOrigin: "center center",
               stroke: "#15bc25",
             },
-            text: { fill: "#ddd" },
+            text: { fill: "black" , fontSize: '13px'},
           }}
           strokeWidth={10}
         />
       </div>
-      <p>Left : {caloriesLeft} g</p>
+      <p>Left {caloriesLeft} kCal</p>
       </div>
       <h2>Proteins</h2>
       <div className="containerInfos">
       
-        <p>Daily : {ProteinTotal()} g</p>
+        <p>Max {`${proteinsTotalDay}g`}</p>
        <div className="circularProgressBarProteins">
         <CircularProgressbar
           value={ProteinTotal()}
           maxValue={proteinsTotalDay}
-          text={`${proteinsTotalDay}g`}
+          text={ `${ProteinTotal()}g`}
           circleRatio={0.7}
           styles={{
             trail: {
@@ -107,21 +109,21 @@ function ReviewsBar({ foodsConsumed }) {
               transformOrigin: "center center",
               stroke: "#e74c3c",
             },
-            text: { fill: "#ddd" },
+            text: { fill: "black" , fontSize: '13px'},
           }}
           strokeWidth={10}
         />
       </div>
-      <p>Left : {proteinsLeft.toFixed(0)} g</p>
+      <p>Left {proteinsLeft.toFixed(0)}g</p>
       </div>
       <h2>Carbohydrates</h2>
        <div className="containerInfos">
-        <p>Daily : {carboTotal()} g</p>
+        <p>Max {`${((dailyObj*PourcentOfcarbohydratePerDay)/EachGlucideHaveFourKcal).toFixed(0)}g`}</p>
        <div className="circularProgressBarCarbohydrates">
         <CircularProgressbar
           value={carboTotal()}
           maxValue={(dailyObj*PourcentOfcarbohydratePerDay)/EachGlucideHaveFourKcal}
-          text={`${((dailyObj*PourcentOfcarbohydratePerDay)/EachGlucideHaveFourKcal).toFixed(0)}g`}
+          text={`${carboTotal()}g`}
           circleRatio={0.7}
           styles={{
             trail: {
@@ -136,7 +138,7 @@ function ReviewsBar({ foodsConsumed }) {
               transformOrigin: "center center",
               stroke: "#2980b9",
             },
-            text: { fill: "#ddd" },
+            text: { fill: "#535252" , fontSize: '13px'},
           }}
           strokeWidth={10}
         />

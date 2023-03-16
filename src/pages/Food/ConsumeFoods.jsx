@@ -1,22 +1,23 @@
 import React, {useContext } from "react";
 import myApi from "../../service/service";
-import { AuthContext } from "../../context/AuthContext";
+import trash from "../../assets/img/icons/trash.svg"
 
 export default function ConsumeFoods({
   foodsConsumed,
   getAllFoodsConsumed,
-  userContext,
+  setfoodsConsumed
 }) {
  
-  const { user } = useContext(AuthContext);
 
   const handleDelete = async (foodId) => {
     try {
-      const deleteFood = await myApi.delete(`/api/board/foods/${foodId}`, {
+      await myApi.delete(`/api/board/foods/${foodId}`, {
         headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
       });
       // console.log(deleteFood);
-      getAllFoodsConsumed();
+      const deletedElement = foodsConsumed.filter(foodToDelete => foodToDelete.food._id !== foodId)
+      setfoodsConsumed(deletedElement)
+      getAllFoodsConsumed()
     } catch (error) {
       console.log(error);
     }
@@ -51,7 +52,6 @@ export default function ConsumeFoods({
   return (
     <div className="containerFoodConsumed">
       <div className="titles">
-        
         <h4>Calories : {caloriesTotal()} kCal</h4>
         <h4>
           Protein(s) : {ProteinTotal()} g 
@@ -61,16 +61,16 @@ export default function ConsumeFoods({
 
       {foodsConsumed.map(({food : foodConsumed , _id}) => {
         return (
-            <div key={foodConsumed._id} className="OneFoodConsumed">
+            <div key={_id} className="OneFoodConsumed">
               <p>{foodConsumed.name} (100g)</p>
-              <p>Calories : {foodConsumed.calories} kCal</p>
-              <p>Protein(s): {foodConsumed.protein}g </p>
-              <p> Carbohydrate(s) : {foodConsumed.carbohydrates} g</p>
+              <p>Cal : {foodConsumed.calories} kCal</p>
+              <p>Pro : {foodConsumed.protein} g </p>
+              <p> Carb : {foodConsumed.carbohydrates} g</p>
               <button
                 className="deleteBtn"
                 onClick={() => handleDelete(_id)}
               >
-                <span>🗑️</span>
+                <img src={trash} alt="trash" />
                 
               </button>
             </div>

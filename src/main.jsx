@@ -15,6 +15,7 @@ import "../src/assets/styles/template.css";
 import "../src/pages/Profile/Profile.css";
 import "../src/pages/CreateProfile/CreateProfile.css";
 import "../src/pages/Login/Login.css";
+import "../src/pages/UpdateProfile/updateProfile.css";
 import "animate.css";
 
 ReactDOM.createRoot(document.getElementById("root")).render(

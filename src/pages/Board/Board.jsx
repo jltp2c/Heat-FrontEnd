@@ -66,9 +66,7 @@ const Board = () => {
         return (
             <div key={foodConsumed._id} className="OneFoodConsumed">
               <p>Food: {foodConsumed.name} (100g)</p>
-              <p>Calorie(s): {foodConsumed.calories} kCal</p>
-              <p>Protein(s): {foodConsumed.protein}g </p>
-              <p> Carbohydrates: {foodConsumed.carbohydrates} g</p>
+              <span>{foodConsumed.calories} kCal</span>
             </div>
             );
           })}
