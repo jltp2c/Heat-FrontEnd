@@ -37,6 +37,7 @@ function CreateProfile() {
 
       if (response.status === 201) {
         setUser((user) => ({ ...user, profile }));
+
         navigate("/board");
       }
       console.log(response);
@@ -126,9 +127,9 @@ function CreateProfile() {
             viewBox="0 0 24 24"
             fill="none"
             stroke="currentColor"
-            stroke-width="2"
-            stroke-linecap="round"
-            stroke-linejoin="round"
+            strokeWidth="2"
+            strokeLinecap="round"
+            strokeinejoin="round"
           >
             <path d="M18.36 6.64a9 9 0 1 1-12.73 0"></path>
             <line x1="12" y1="2" x2="12" y2="12"></line>
