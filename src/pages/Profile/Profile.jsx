@@ -110,16 +110,16 @@ function Profile() {
           </div>
         </div>
         <div className="profilBottomSection">
-          <h2 className="manageProfilTitle">Manage my profil</h2>
+          <h2 className="manageProfilTitle">Manage my profile</h2>
           <p>
             Missed something ? Update your profile's infos or delete it here !
           </p>
           <div className="profilBtns">
             <button className="btn" onClick={handleUpdate}>
-              update profile
+              update
             </button>
             <button className="profilDeleteBtn btn" onClick={handleDelete}>
-              delete profile
+              delete
             </button>
           </div>
         </div>
