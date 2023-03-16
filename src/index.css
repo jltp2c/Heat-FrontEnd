@@ -28,7 +28,6 @@ a {
   padding: 0;
   margin: 0;
   /* outline: 1px solid red; */
-}
 
 body {
   /* margin: 0;
@@ -64,6 +63,3 @@ button:focus,
 button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
 }
-
-
- 
