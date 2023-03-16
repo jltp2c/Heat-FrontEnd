@@ -12,24 +12,19 @@
     box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px,
         rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
     background-color: whitesmoke;
-    padding: 10px;
-    transition: all 1s ease;
+    padding: 5px;
+    height: 140px;
+    width: 135px;
     font-size: 0.7rem;
 }
 
-.cardContainerFood:hover {
-    transform: scale(1.1);
-    border: 2px solid green;
-    transition: all 1s ease;
-    margin: 10px;
-}
+
 
 
 .containerFoodConsumed {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    text-align: center;
     align-items: center;
 }
 
@@ -38,10 +33,11 @@
 }
 
 .OneFoodConsumed {
-
     border: 1px solid grey;
     border-radius: 10px;
     margin: 10px;
+    box-shadow: rgba(0, 0, 0, 0.15) 2.4px 2.4px 3.2px;
+    text-align: center;
 }
 
 .titles {
@@ -68,8 +64,8 @@
 
 .searchBarFood input {
     margin: 20px;
-    height: 30px;
-    width: 200px;
+    height: 40px;
+    width: 220px;
 }
 
 h3 {
