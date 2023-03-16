@@ -70,7 +70,7 @@ function CreateProfile() {
             onChange={(event) => setGender(event.target.value)}
           >
             <option className="gender" disabled value="disabled">
-              gender
+              Gender
             </option>
             <option value="Man">Man</option>
             <option value="Woman">Woman</option>
@@ -82,6 +82,7 @@ function CreateProfile() {
             type="number"
             id="age"
             min={18}
+            max={120}
             value={age}
             onChange={(event) => setAge(event.target.value)}
             placeholder="Enter your age"
@@ -93,8 +94,10 @@ function CreateProfile() {
             type="number"
             id="currentHeight"
             value={currentHeight}
+            min={100}
+            max={300}
             onChange={(event) => setCurrentHeight(event.target.value)}
-            placeholder="Enter your height in cms"
+            placeholder="Enter your height (cm)"
           />
         </div>
 
@@ -103,8 +106,10 @@ function CreateProfile() {
             type="number"
             id="currentWeight"
             value={currentWeight}
+            min= {20}
+            max={300}
             onChange={(event) => setCurrentWeight(event.target.value)}
-            placeholder="Enter your weight in kg"
+            placeholder="Enter your weight (kg)"
           />
         </div>
 
@@ -113,8 +118,10 @@ function CreateProfile() {
             type="number"
             id="weightGoal"
             value={weightGoal}
+            min= {20}
+            max={300}
             onChange={(event) => setWeightGoal(event.target.value)}
-            placeholder="Enter your weight goal in kg"
+            placeholder="Enter your weight goal (kg)"
           />
         </div>
         {error.length > 0 && <p className="error">{error}</p>}
