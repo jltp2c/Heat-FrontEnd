@@ -3,7 +3,6 @@ import { useState, useContext } from "react";
 import myApi from "./../../service/service";
 import { AuthContext } from "../../context/AuthContext";
 import { useNavigate } from "react-router-dom";
-import TitleApp from "../../components/Profile/TitleApp";
 
 export default function Login() {
   //initialization of states for inputs and error
@@ -45,10 +44,10 @@ export default function Login() {
   }
 
   return (
-    <>
-      <TitleApp />
-
+    <div className="loginPageHeat">
+      
       <form onSubmit={handleSubmit} className="formLogin">
+       <h1>HEAT</h1>
         <div>
           <label htmlFor="username">
             Username:&nbsp;
@@ -75,6 +74,6 @@ export default function Login() {
         {error.length > 0 && <p className="error">{error}</p>}
         <button className="btn">Login</button>
       </form>
-    </>
+    </div>
   );
 }

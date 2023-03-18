@@ -28,9 +28,11 @@ label {
 input {
     border: 1px solid #ccc;
     border-radius: 5px;
-    height: 20px;
+    height: 35px;
+    width: 150px;
     margin-bottom: 5px;
     padding: 2px;
+    font-size: 1rem;
 }
 
 .form {

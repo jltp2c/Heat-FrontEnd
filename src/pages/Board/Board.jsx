@@ -62,14 +62,16 @@ const Board = () => {
       <button className="btn" width={"2OO"} onClick={onOpenModal}>My foods</button>
       <Modal open={open} onClose={onCloseModal} center>
         <p>Food(s): {date.toDateString()}</p>
-         {foodsConsumed.map(({food :foodConsumed}) => {
+         {foodsConsumed.length>0? (foodsConsumed.map(({food :foodConsumed}) => {
         return (
             <div key={foodConsumed._id} className="OneFoodConsumed">
               <p>{foodConsumed.name} (100g) &nbsp; </p>
               <span>{foodConsumed.calories} kCal</span>
             </div>
             );
-          })}
+          })) : (
+            <p className="pleaseAdd">Please add your foods !</p>
+          )}
         </Modal>
       </div>
       <div className="reviewsBar Container">

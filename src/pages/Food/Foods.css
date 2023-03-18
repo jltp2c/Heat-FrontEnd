@@ -4,18 +4,16 @@
     justify-content: center;
     align-items: center;
     gap: 10px;
+    margin-bottom: 100px;
 }
 
 .cardContainerFood {
-
     border-radius: 10px;
     box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px,
         rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
     background-color: whitesmoke;
     font-size: 0.8rem;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+
     border-radius: 10px;
     margin: 4px;
     box-shadow: rgba(0, 0, 0, 0.15) 2.4px 2.4px 3.2px;
@@ -23,9 +21,8 @@
     padding: 5px;
     width: 300px;
 
+
 }
-
-
 
 
 .containerFoodConsumed {
@@ -87,7 +84,6 @@ h3 {
     margin: 20px;
 }
 
-.alignLeft {
-    text-align: left;
-    padding-left: 15px;
+.nameFood {
+    margin-bottom: 5px;
 }

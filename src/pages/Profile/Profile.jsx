@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext} from "react";
 import { NavLink, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../context/AuthContext";
 import myApi from "../../service/service.js";
@@ -118,7 +118,7 @@ function Profile() {
             <button className="btn" onClick={handleUpdate}>
               Update
             </button>
-            <button className="profilDeleteBtn btn" onClick={handleDelete}>
+            <button className="profilDeleteBtn" onClick={handleDelete}>
               Delete
             </button>
           </div>

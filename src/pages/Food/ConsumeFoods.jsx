@@ -1,4 +1,3 @@
-import React, {useContext } from "react";
 import myApi from "../../service/service";
 import trash from "../../assets/img/icons/trash.svg"
 
@@ -6,7 +5,8 @@ export default function ConsumeFoods({
   foodsConsumed,
   getAllFoodsConsumed,
   setfoodsConsumed
-}) {
+  }) 
+  {
  
 
   const handleDelete = async (foodId) => {
@@ -15,8 +15,8 @@ export default function ConsumeFoods({
         headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
       });
       // console.log(deleteFood);
-      const deletedElement = foodsConsumed.filter(foodToDelete => foodToDelete.food._id !== foodId)
-      setfoodsConsumed(deletedElement)
+      const foodsLeft = foodsConsumed.filter(foodToDelete => foodToDelete.food._id !== foodId)
+      setfoodsConsumed(foodsLeft)
       getAllFoodsConsumed()
     } catch (error) {
       console.log(error);
