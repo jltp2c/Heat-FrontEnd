@@ -2,7 +2,7 @@ import React from "react";
 import { useState } from "react";
 import myApi from "./../../service/service";
 import { Navigate, useNavigate } from "react-router-dom";
-import TitleApp from "../../components/Profile/TitleApp";
+
 
 export default function Signup() {
   const [{ username, email, password }, setFormData] = useState({
@@ -40,8 +40,9 @@ export default function Signup() {
 
   return (
     <>
-      <TitleApp />
+      
       <form onSubmit={handleSubmit} className="formLogin">
+       <h1>HEAT</h1>
         <div>
           <label htmlFor="username">
             Username:&nbsp;

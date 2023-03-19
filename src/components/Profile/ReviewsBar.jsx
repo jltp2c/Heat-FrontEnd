@@ -51,7 +51,7 @@ function ReviewsBar({ foodsConsumed }) {
     <div className="allCirclesReview">
       <h2>Calories</h2>
       <div className="containerInfos">
-        <p>Max {dailyObj} kCal</p>
+        <p>Goal  {dailyObj} kCal</p>
         <div className="circularProgressBarProteins">
           <CircularProgressbar
             value={getCalories()}
@@ -71,7 +71,7 @@ function ReviewsBar({ foodsConsumed }) {
                 transformOrigin: "center center",
                 stroke: "#15bc25",
               },
-              text: { fill: "black", fontSize: "13px" },
+              text: { fill: caloriesLeft > 0 ? "black" : "red", fontSize: "13px" },
             }}
             strokeWidth={10}
           />
@@ -81,7 +81,7 @@ function ReviewsBar({ foodsConsumed }) {
       <h2>Proteins</h2>
       <div className="containerInfos">
       
-        <p>Max {`${proteinsTotalDay.toFixed(1)}g`}</p>
+        <p>Goal {`${proteinsTotalDay.toFixed(1)}g`}</p>
        <div className="circularProgressBarProteins">
         <CircularProgressbar
           value={ProteinTotal()}
@@ -101,7 +101,7 @@ function ReviewsBar({ foodsConsumed }) {
               transformOrigin: "center center",
               stroke: "#e74c3c",
             },
-            text: { fill: "black" , fontSize: '13px'},
+            text: { fill: proteinsLeft>0 ? "black" : "red", fontSize: '13px'},
           }}
           strokeWidth={10}
         />
@@ -110,7 +110,7 @@ function ReviewsBar({ foodsConsumed }) {
       </div>
       <h2>Carbohydrates</h2>
        <div className="containerInfos">
-        <p>Max {`${((dailyObj*PourcentOfcarbohydratePerDay)/EachGlucideHaveFourKcal).toFixed(1)}g`}</p>
+        <p>Goal {`${((dailyObj*PourcentOfcarbohydratePerDay)/EachGlucideHaveFourKcal).toFixed(1)}g`}</p>
        <div className="circularProgressBarCarbohydrates">
         <CircularProgressbar
           value={carboTotal()}
@@ -130,7 +130,7 @@ function ReviewsBar({ foodsConsumed }) {
               transformOrigin: "center center",
               stroke: "#2980b9",
             },
-            text: { fill: "#535252" , fontSize: '13px'},
+            text: { fill: ((dailyObj*PourcentOfcarbohydratePerDay)/EachGlucideHaveFourKcal-carboTotal())> 0 ? "black" : "red" , fontSize: '13px'},
           }}
           strokeWidth={10}
         />

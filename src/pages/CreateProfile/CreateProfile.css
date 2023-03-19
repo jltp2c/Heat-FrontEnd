@@ -86,9 +86,7 @@ select {
 }
 
 .btnLogout {
-    position: absolute;
-    bottom: 600px;
-    left: 360px;
+    display: block;
     background-color: whitesmoke;
     height: 50px;
     width: 50px;
@@ -96,5 +94,5 @@ select {
     padding: 0;
     box-shadow: rgba(44, 44, 82, 0.25) 0px 2px 5px -1px,
         rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
-    transform: translate(-4rem, 10rem);
+    transform: translate(16.5rem, -31rem);
 }

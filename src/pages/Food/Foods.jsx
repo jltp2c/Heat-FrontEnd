@@ -7,7 +7,6 @@ import myApi from "../../service/service";
 import addPic from "../../assets/img/icons/plus-circle.svg"
 
 function Foods() {
-  // const [date, setDate] = useState(new Date())
   const [foods, setFoods] = useState([]);
   const [foodsConsumed, setfoodsConsumed] = useState([]);
   const [searchValue, setSearchValue] = useState('');
@@ -81,7 +80,7 @@ function Foods() {
         setfoodsConsumed={setfoodsConsumed}
       />
      
-      <h3>Pick your food (per 100g)</h3>
+      <h3>Search your food (per 100g)</h3>
        <div className="searchBarFood">
         <input
           type="text"
@@ -90,27 +89,25 @@ function Foods() {
         />
       </div>
       <div className="foodStorage">
-      
-          {foods
+
+        {(foods
         .filter((food) => {
           return food.name.toLowerCase().includes(searchValue.toLowerCase());
          })
         .map((eachFood) => {
           return (
-            <div key={eachFood._id} className="cardContainerFood">
-              <p className="alignLeft">{eachFood.name} (100g)</p>
+            <div key={eachFood._id} className="cardContainerFood" onClick={() => getOneFood(eachFood._id)}>
+              <p className="nameFood"><b>{eachFood.name}</b></p>
               <p>{eachFood.calories} kCal</p>
-              <p>Pro: {eachFood.protein}g</p>
-              <p>Carb: {eachFood.carbohydrates}g</p>
-              <button
-                className="addBtn"
-                onClick={() => getOneFood(eachFood._id)}
-              >
-                <img src={addPic} alt="addingBtn"></img>
-              </button>
+              <p>Protein(s): {eachFood.protein}g</p>
+              <p>Carbohydrate(s): {eachFood.carbohydrates}g</p>
             </div>
           );
-        })}
+        })
+        .slice(0,3)
+        
+        )}
+        
       </div>
     </div>
   );
